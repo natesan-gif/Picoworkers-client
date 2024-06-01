@@ -57,8 +57,8 @@ const Nav = () => {
             isPending
               ? "pending"
               : isActive
-              ? "text-[#416EF0]  border-b-4 font-bold border-[#416EF0]"
-              : "hover:text-[#416EF0]  font-bold"
+              ? "text-[#0044BC]  border-b-4 font-bold border-[#0044BC]"
+              : "hover:text-[#0044BC] font-bold"
           }
         >
           Home
@@ -122,7 +122,7 @@ const Nav = () => {
             {user ? (
               <button
                 onClick={handleSignOut}
-                className="btn bg-[#416EF0]  text-white rounded "
+                className="btn bg-[#0044BC]  text-white rounded "
               >
                 {" "}
                 LogOut
@@ -130,12 +130,12 @@ const Nav = () => {
             ) : (
               <div className="flex gap-2">
                 <Link to="/login">
-                  <button className="btn bg-[#416EF0]  text-white rounded ">
+                  <button className="btn bg-[#0044BC] hover:bg-[#6BA6FF]  text-white rounded ">
                     Login
                   </button>
                 </Link>
                 <Link to="/register">
-                  <button className="btn bg-[#416EF0]  text-white rounded ">
+                  <button className="btn bg-[#0044BC] hover:bg-[#6BA6FF]  text-white rounded ">
                     Register
                   </button>
                 </Link>
