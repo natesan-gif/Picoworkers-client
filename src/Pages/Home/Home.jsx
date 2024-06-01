@@ -3,6 +3,7 @@ import Spinner from '../../components/Spinner/Spinner';
 import Banner from './Banner/Banner';
 import FeatureSection from './FeatureSection/FeatureSection';
 import HowWorks from './HowWorks/HowWorks';
+import Testimonials from './Testimonials/Testimonials';
 
 
 const Home = () => {
@@ -19,6 +20,7 @@ const Home = () => {
             <Banner></Banner>
             <FeatureSection></FeatureSection>
             <HowWorks></HowWorks>
+            <Testimonials></Testimonials>
         </div>
     );
 };

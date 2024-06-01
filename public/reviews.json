@@ -1,0 +1,37 @@
+[
+  {
+    "id": 1,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUAtdCRf_mGFea-5kQG7J8tcahbpjUotyls2KG3pKzJOZVpNFEpKYbShfwELrIZlF23_c&usqp=CAU",
+    "name": "John Doe",
+    "rating": 4.5,
+    "details": "Picoworkers is an excellent microtasking platform. It offers a wide variety of tasks suitable for everyone. I've been using Picoworkers for a while now, and it has been a great source of additional income. The tasks are straightforward and the payment system is reliable. I highly recommend Picoworkers to anyone looking to earn extra money online."
+  },
+  {
+    "id": 2,
+    "image": "https://static.independent.co.uk/s3fs-public/thumbnails/image/2015/06/06/15/Chris-Pratt.jpg",
+    "name": "Jane Smith",
+    "rating": 4.0,
+    "details": "I've had a positive experience with Picoworkers so far. It's a user-friendly platform that allows me to earn money from the comfort of my home. The tasks are diverse, and I appreciate the flexibility it offers. The support team is also responsive and helpful whenever I encounter any issues. Overall, I'm satisfied with my experience on Picoworkers."
+  },
+  {
+    "id": 3,
+    "image": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQUAtdCRf_mGFea-5kQG7J8tcahbpjUotyls2KG3pKzJOZVpNFEpKYbShfwELrIZlF23_c&usqp=CAU",
+    "name": "Alice Johnson",
+    "rating": 4.8,
+    "details": "I highly recommend Picoworkers to anyone looking for a reliable microtasking platform. It's easy to navigate, and the tasks are well-organized. The payment process is smooth, and I've never encountered any delays. Picoworkers has helped me earn extra income in my free time, and I'm grateful for the opportunity it provides."
+  },
+  {
+    "id": 4,
+    "image": "https://media.istockphoto.com/id/1364917563/photo/businessman-smiling-with-arms-crossed-on-white-background.jpg?s=612x612&w=0&k=20&c=NtM9Wbs1DBiGaiowsxJY6wNCnLf0POa65rYEwnZymrM=",
+    "name": "Michael Brown",
+    "rating": 3.9,
+    "details": "Picoworkers is a decent platform for earning extra income. The tasks are simple and straightforward, and the payment system is reliable. However, there is room for improvement in terms of task variety and earning opportunities. Overall, I've had a positive experience with Picoworkers and would recommend it to others."
+  },
+  {
+    "id": 5,
+    "image": "https://static.independent.co.uk/s3fs-public/thumbnails/image/2015/06/06/15/Chris-Pratt.jpg",
+    "name": "Emily Davis",
+    "rating": 4.7,
+    "details": "Picoworkers has been a lifesaver for me. It's a great platform for earning extra income, especially for students like myself. The tasks are easy to complete, and the payment is prompt. I've had a positive experience with Picoworkers, and I appreciate the opportunity it provides to earn money online."
+  }
+]
