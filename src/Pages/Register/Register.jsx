@@ -42,7 +42,7 @@ const Register = () => {
     console.log(res.data)
     if (res.data.success) {
       const photoURL= res.data.data.display_url
-      const { email, password, yourName,    } = data;
+      const { email, password, yourName,  role  } = data;
       console.log(data)
     
       try {
@@ -82,7 +82,7 @@ const Register = () => {
             <Toaster />
             <div className="form-control">
               <label className="label">
-                <span className="label-text text-black">Your Name</span>
+                <span className="label-text text-black">Your Name*</span>
               </label>
               <input
                 type="text"
@@ -95,7 +95,7 @@ const Register = () => {
                 <span className="text-red-500">This field is required</span>
               )}
               <label className="label">
-                <span className="label-text text-black">Photo URL</span>
+                <span className="label-text text-black">Photo URL*</span>
               </label>
               {/* <input
                 type="text"
@@ -112,7 +112,7 @@ const Register = () => {
               )}
 
               <label className="label">
-                <span className="label-text text-black">Email</span>
+                <span className="label-text text-black">Email*</span>
               </label>
               <input
                 type="email"
@@ -127,7 +127,7 @@ const Register = () => {
             </div>
             <div className="form-control">
               <label className="label">
-                <span className="label-text text-black">Password</span>
+                <span className="label-text text-black">Password*</span>
               </label>
               <div className="relative">
                 <input
@@ -172,6 +172,18 @@ const Register = () => {
                 </a>
               </label>
             </div>
+               <div className="form-control">
+                            <label className="label">
+                                <span className="label-text text-black">Role*</span>
+                            </label>
+                            <select defaultValue="default" {...register('role', { required: true })}
+                                className="select select-bordered w-full">
+                                <option disabled value="default">Select a role</option>
+                                <option value="worker">Worker</option>
+                                <option value="taskCreator">Task Creator</option>
+                               
+                            </select>
+                        </div>
             <div className="form-control mt-6">
               <button className="btn bg-[#416EF0] text-white rounded border-none">
                 Register
