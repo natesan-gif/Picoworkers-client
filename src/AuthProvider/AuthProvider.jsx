@@ -42,9 +42,9 @@ const AuthProvider = ({ children }) => {
            Navigate('/')
     };
 
-    const updateUserProfile = (name, photo) => {
+    const updateUserProfile = (name, image) => {
 return updateProfile(auth.currentUser, {
-  displayName: name, photoURL: photo
+  displayName: name, photoURL: image
 })
 }
     useEffect(() => {

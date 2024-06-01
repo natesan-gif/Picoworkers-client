@@ -8,10 +8,14 @@ import { FaEye } from "react-icons/fa";
 import { IoMdEyeOff } from "react-icons/io";
 import useAuth from "../../Hooks/useAuth";
 import Lottie from "lottie-react";
+import useAxiosPublic from "../../Hooks/useAxiosPublic";
 // import axios from "axios";
+  const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+  const image_hosting_api =`https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 const Register = () => {
   const { createUser, updateUserProfile, user, loading, setUser } = useAuth();
   const navigate = useNavigate();
+  const axiosPublic=useAxiosPublic()
   const from = "/";
 
   const [showPassword, setShowPassword] = useState(false);
@@ -26,27 +30,40 @@ const Register = () => {
     formState: { errors },
   } = useForm();
 
-  const onSubmit = async (info) => {
-    const { email, password, yourName, photoURL } = info;
-
-    try {
-      const result = await createUser(email, password);
-      // Register successful, update user profile
-      await updateUserProfile(yourName, photoURL);
-      setUser({ ...result?.user, photoURL: photoURL, displayName: yourName });
-      // const { data } = await axios.post(
-      //   `${import.meta.env.VITE_API_URL}/jwt`,
-      //   {
-      //     email: result?.user?.email,
-      //   },
-      //   { withCredentials: true }
-      // );
-      // console.log(data);
-      navigate(from, { replace: true });
-      toast.success("Sign up Successful");
-    } catch (err) {
-      console.log(err);
-      toast.error(err?.message);
+  const onSubmit = async (data) => {
+     //  console.log(data) 
+        //image upload to the imgbb and then get an url
+        const imageFile={image:data.image[0]}
+        const res = await axiosPublic.post(image_hosting_api, imageFile, {
+            headers: {
+                'content-Type': 'multipart/form-data',
+            }
+        });
+    console.log(res.data)
+    if (res.data.success) {
+      const photoURL= res.data.data.display_url
+      const { email, password, yourName,    } = data;
+      console.log(data)
+    
+      try {
+        const result = await createUser(email, password);
+        // Register successful, update user profile
+        await updateUserProfile(yourName, photoURL);
+        setUser({ ...result?.user, photoURL: photoURL, displayName: yourName });
+        // const { data } = await axios.post(
+        //   `${import.meta.env.VITE_API_URL}/jwt`,
+        //   {
+        //     email: result?.user?.email,
+        //   },
+        //   { withCredentials: true }
+        // );
+        // console.log(data);
+        navigate(from, { replace: true });
+        toast.success("Sign up Successful");
+      } catch (err) {
+        console.log(err);
+        toast.error(err?.message);
+      }
     }
   };
   if (user || loading) return;
@@ -80,14 +97,17 @@ const Register = () => {
               <label className="label">
                 <span className="label-text text-black">Photo URL</span>
               </label>
-              <input
+              {/* <input
                 type="text"
                 placeholder="Photo URL"
                 name="photo"
                 className="input input-bordered"
                 {...register("photoURL", { required: true })}
-              />
-              {errors.photoURL && (
+              /> */}
+           
+                        <input {...register('image', { required: true })} type="file" className="file-input w-full max-w-xs" />
+                    
+              {errors.image && (
                 <span className="text-red-500 ">This field is required</span>
               )}
 
