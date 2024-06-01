@@ -32,7 +32,7 @@ How It Works
 				<p className="text-3xl font-semibold pt-4">
 				Complete Tasks
                     </p>
-                    <p className='pb-4 text-lg'>select a task that interests you and complete it</p>
+                    <p className='pb-4 text-lg'>Select a task that interests you and complete it</p>
 			</div>
 			<div className="flex flex-col p-8 space-y-4 rounded-md bg-[#416EF0] text-white">
                     <div className="flex items-center justify-center flex-shrink-0 w-12 h-12 text-xl font-bold rounded-full dark:bg-violet-600">
