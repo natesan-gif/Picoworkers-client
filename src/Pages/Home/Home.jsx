@@ -1,6 +1,9 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import Spinner from '../../components/Spinner/Spinner';
-import Banner from '../../components/Banner/Banner';
+import Banner from './Banner/Banner';
+import FeatureSection from './FeatureSection/FeatureSection';
+import HowWorks from './HowWorks/HowWorks';
+
 
 const Home = () => {
     const [loading, setLoading] = useState(true);
@@ -14,6 +17,8 @@ const Home = () => {
     return (
         <div>
             <Banner></Banner>
+            <FeatureSection></FeatureSection>
+            <HowWorks></HowWorks>
         </div>
     );
 };

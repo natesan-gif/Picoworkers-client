@@ -1,0 +1,111 @@
+#app {
+  height: 100%;
+}
+html,
+body {
+  position: relative;
+  height: 100%;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+#app {
+  height: 100%;
+}
+html,
+body {
+  position: relative;
+  height: 100%;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+}
+
+.swiper-slide {
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+}
+
+.swiper-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background: linear-gradient(
+    0deg,
+    rgba(21, 11, 43, 0.9) 0%,
+    rgba(21, 11, 43, 0) 100%
+  );
+}
+.slide1 {
+  background: linear-gradient(
+      0deg,
+      rgba(21, 11, 43, 0.9) 0%,
+      rgba(21, 11, 43, 0) 100%
+    ),
+    url("../../../assets/banner/images4.jpg") no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.slide2 {
+  background: linear-gradient(
+      0deg,
+      rgba(21, 11, 43, 0.9) 0%,
+      rgba(21, 11, 43, 0) 100%
+    ),
+    url("../../../assets/banner/images1.jpeg") no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+.slide3 {
+  background: linear-gradient(
+      0deg,
+      rgba(21, 11, 43, 0.9) 0%,
+      rgba(21, 11, 43, 0) 100%
+    ),
+    url("../../../assets/banner/image3.jpeg") no-repeat;
+  background-position: center;
+  background-size: cover;
+}
