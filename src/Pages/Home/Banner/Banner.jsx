@@ -45,7 +45,7 @@ const Banner = () => {
            <Button
                 variant="text"
                 size="sm"
-                className="inline-block px-8 py-3 bg-[#416EF0]  text-white rounded"
+                className="inline-block px-8 py-3 bg-[#0044BC] hover:bg-[#6BA6FF]  text-white rounded"
               >
                 <span>Contact Us</span>
               </Button>
@@ -60,7 +60,7 @@ const Banner = () => {
            <Button
                 variant="text"
                 size="sm"
-                className="inline-block px-8 py-3 bg-[#416EF0]  text-white rounded"
+                className="inline-block px-8 py-3 bg-[#0044BC] hover:bg-[#6BA6FF]  text-white rounded"
               >
                 <span>Contact Us</span>
               </Button>
@@ -76,7 +76,7 @@ const Banner = () => {
            <Button
                 variant="text"
                 size="sm"
-                className="inline-block px-8 py-3 bg-[#416EF0]  text-white rounded"
+                className="inline-block px-8 py-3 bg-[#0044BC] hover:bg-[#6BA6FF] text-white rounded"
               >
                 <span>Contact Us</span>
               </Button>
