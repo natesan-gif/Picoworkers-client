@@ -3,7 +3,8 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 // Import Swiper styles
 import 'swiper/css';
 import 'swiper/css/navigation';
-
+import { Rating } from "@smastrom/react-rating";
+import '@smastrom/react-rating/style.css'
 // import required modules
 import { Navigation } from 'swiper/modules';
 import { useEffect, useState } from 'react';
@@ -16,7 +17,7 @@ const Testimonials = () => {
       .then((res) => res.json())
       .then((data) => setReviews(data));
   }, []);
-console.log(reviews)
+// console.log(reviews)
   return (
     <section className="mt-12">
       <div className="max-w-[700px] mx-auto text-center space-y-4">
@@ -43,7 +44,12 @@ console.log(reviews)
                 className="w-full h-full rounded-full object-cover" 
               />
                   </div>
-                            <h3 className="text-2xl">{review.name}</h3>
+                        <h3 className="text-2xl">{review.name}</h3>
+                           <Rating
+                                style={{ maxWidth: 180 }}
+                                value={review.rating}
+                                readOnly
+                            />
                                <p className="py-8">{review.details}</p>
                         </div>
                     </SwiperSlide>)

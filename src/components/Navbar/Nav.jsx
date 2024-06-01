@@ -73,16 +73,19 @@ const Nav = () => {
       <Navbar className="sticky top-0 z-2 h-max max-w-full rounded-none px-4 py-2 lg:px-8 lg:py-4">
         <div className="flex items-center justify-between text-blue-gray-900">
           <div className="flex items-center justify-center">
-            <div className="w-16 h-16 md:w-12 md:h-12 rounded-full dark:bg-violet-600 hidden md:block">
+            {/* <div className="w-16 h-16 md:w-12 md:h-12 rounded-full dark:bg-violet-600 hidden md:block">
               <img src="" alt="" />
-            </div>
-            <Typography
+            </div> */}
+            <Link to='/'>
+                 <Typography
               as="a"
               href="#"
               className="mr-1 md:mr-2 cursor-pointer py-1.5 font-bold pl-2 md:pl-6 text-xl text-[#416EF0] "
             >
           PicoWorker
             </Typography>
+         
+            </Link>
           </div>
           <div className="flex items-center gap-4">
             <div className="mr-4 hidden lg:block">{navList}</div>
