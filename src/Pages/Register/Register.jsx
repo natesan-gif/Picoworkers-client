@@ -39,11 +39,11 @@ const Register = () => {
                 'content-Type': 'multipart/form-data',
             }
         });
-    console.log(res.data)
+    // console.log(res.data)
     if (res.data.success) {
       const photoURL= res.data.data.display_url
       const { email, password, yourName,  role  } = data;
-      console.log(data)
+      // console.log(data)
     
       try {
         const result = await createUser(email, password);
@@ -73,7 +73,7 @@ const Register = () => {
         <title>| Register</title>
       </Helmet>
       <div className=" flex w-full max-w-sm mx-auto mt-12 overflow-hidden rounded-lg bg-white shadow-lg dark:bg-gray-800 lg:max-w-4xl ">
-        <div className="w-full max-w-md rounded-md shadow sm:p-8 text-black bg-[#0044BC]">
+        <div className="w-full max-w-md rounded-md shadow sm:p-8 text-black bg-[#416EF0] ">
           <div>
             <h2 className="text-2xl text-center mt-4">Register Account Now!</h2>
           </div>
@@ -185,7 +185,7 @@ const Register = () => {
                             </select>
                         </div>
             <div className="form-control mt-6">
-              <button className="btn bg-[#416EF0] text-white rounded border-none">
+              <button className="btn bg-[#0044BC] text-white rounded border-none">
                 Register
               </button>
             </div>

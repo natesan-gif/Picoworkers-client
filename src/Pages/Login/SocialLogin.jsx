@@ -52,7 +52,7 @@ const SocialLogin = () => {
         onClick={handleGoogleSignIn}
         aria-label="Login with Google"
         type="button"
-        className="flex w-full max-w-md p-4 bg-[#416EF0] text-white items-center  border-none justify-center space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-600 focus:dark:ring-violet-600"
+        className="flex w-full max-w-md p-4 bg-[#0044BC] text-white items-center  border-none justify-center space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-600 focus:dark:ring-violet-600"
       >
         <Toaster></Toaster>
         <svg

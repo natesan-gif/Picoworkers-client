@@ -72,7 +72,7 @@ const Login = () => {
      <div className="hidden bg-cover lg:block lg:w-1/2 pt-12 ">
                     <Lottie animationData={login} > </Lottie>	
     </div>
-   <div className="w-full max-w-md p-4 rounded-md shadow sm:p-8 text-black bg-[#0044BC]">
+   <div className="w-full max-w-md p-4 rounded-md shadow sm:p-8 text-black bg-[#416EF0]">
             <h2 className="mb-2 text-2xl font-semibold text-center">Login to your account</h2>
             <p className="text-sm text-center dark:text-gray-600">
                 Do not have an account? Please {' '}
@@ -119,7 +119,7 @@ const Login = () => {
                         </label>
                     </div>
                     <div className="form-control mt-2">
-                        <button className="btn bg-[#416EF0] text-white rounded border-none">Login</button>
+                        <button className="btn  bg-[#0044BC] text-white rounded border-none">Login</button>
                     </div>
                 </form>
             </div>
