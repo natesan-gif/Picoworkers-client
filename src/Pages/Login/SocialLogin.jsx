@@ -7,7 +7,7 @@ import useAuth from "../../Hooks/useAuth";
 // import axios from "axios";
 
 const SocialLogin = () => {
-  const { googleLogin, user, loading } = useAuth();
+  const { googleSignIn, user, loading } = useAuth();
 
   //navigation
   const navigate = useNavigate();
@@ -23,7 +23,7 @@ const SocialLogin = () => {
   const handleGoogleSignIn = async () => {
     try {
       // 1. google sign in from firebase
-      const result = await googleLogin();
+      const result = await googleSignIn();
       // console.log(result.user);
 
       //2. get token from server using email
@@ -34,7 +34,7 @@ const SocialLogin = () => {
     //     },
     //     { withCredentials: true }
     //   );
-      // console.log(data);
+      console.log(result);
       toast.success("Sign in Successfully");
       navigate(from, { replace: true });
     } catch (err) {
@@ -49,10 +49,11 @@ const SocialLogin = () => {
     <div className="my-2 space-y-2">
     
       <button
+        disabled={loading}
         onClick={handleGoogleSignIn}
         aria-label="Login with Google"
         type="button"
-        className="flex w-full max-w-md p-4  bg-[#0044BC] hover:bg-[#6BA6FF] text-white items-center  border-none justify-center space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-600 focus:dark:ring-violet-600"
+        className=" disabled:cursor-not-allowed flex w-full max-w-md p-4  bg-[#0044BC] hover:bg-[#6BA6FF] text-white items-center  border-none justify-center space-x-4 border rounded-md focus:ring-2 focus:ring-offset-1 dark:border-gray-600 focus:dark:ring-violet-600"
       >
         <Toaster></Toaster>
         <svg

@@ -1,9 +1,10 @@
 import { useEffect, useState } from 'react';
-import Spinner from '../../components/Spinner/Spinner';
+
 import Banner from './Banner/Banner';
 import FeatureSection from './FeatureSection/FeatureSection';
 import HowWorks from './HowWorks/HowWorks';
 import Testimonials from './Testimonials/Testimonials';
+import LoadingSpinner from '../../components/Spinner/LoadingSpinner';
 
 
 const Home = () => {
@@ -14,7 +15,7 @@ const Home = () => {
             setLoading(false);
         }, 2000); // Adjust the timeout duration as needed
     }, []);
-    if (loading) return <Spinner></Spinner>;
+    if (loading) return <LoadingSpinner></LoadingSpinner>;
     return (
         <div>
             <Banner></Banner>

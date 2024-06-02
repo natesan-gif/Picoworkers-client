@@ -73,7 +73,7 @@ const Login = () => {
                     <Lottie animationData={login} > </Lottie>	
     </div>
    <div className="w-full max-w-md p-4 rounded-md shadow sm:p-8 text-black bg-[#416EF0]">
-            <h2 className="mb-2 text-2xl font-semibold text-center">Login to your account</h2>
+            <h2 className="mb-2 text-xl font-semibold text-center">Login to your account</h2>
             <p className="text-sm text-center dark:text-gray-600">
                 Do not have an account? Please {' '}
                 <Link to="/register" className="text-white font-bold">

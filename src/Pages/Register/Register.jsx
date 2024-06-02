@@ -9,6 +9,9 @@ import { IoMdEyeOff } from "react-icons/io";
 import useAuth from "../../Hooks/useAuth";
 import Lottie from "lottie-react";
 import useAxiosPublic from "../../Hooks/useAxiosPublic";
+import { TbFidgetSpinner } from "react-icons/tb";
+import SocialLogin from "../Login/SocialLogin";
+import Spinner from "../../components/Spinner/Spinner";
 // import axios from "axios";
   const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
   const image_hosting_api =`https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
@@ -43,7 +46,7 @@ const Register = () => {
     if (res.data.success) {
       const photoURL= res.data.data.display_url
       const { email, password, yourName,  role  } = data;
-      // console.log(data)
+      console.log(data)
     
       try {
         const result = await createUser(email, password);
@@ -72,13 +75,14 @@ const Register = () => {
       <Helmet>
         <title>| Register</title>
       </Helmet>
-      <div className=" flex w-full max-w-sm mx-auto mt-12 overflow-hidden rounded-lg bg-white shadow-lg dark:bg-gray-800 lg:max-w-4xl ">
-        <div className="w-full max-w-md rounded-md shadow sm:p-8 text-black  bg-[#416EF0] ">
+      <div className=" flex w-full max-w-sm  mx-auto mt-12 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-4xl ">
+        <div className="w-full max-w-md p-4 rounded-md shadow sm:p-8 text-black bg-[#416EF0] ">
           <div>
-            <h2 className="text-2xl text-center mt-4">Register Account Now!</h2>
+            <h2 className="text-xl text-center mt-4">Register Account Now!</h2>
           </div>
 
           <form onSubmit={handleSubmit(onSubmit)} className="card-body">
+             <SocialLogin></SocialLogin>
             <Toaster />
             <div className="form-control">
               <label className="label">
@@ -185,11 +189,16 @@ const Register = () => {
                             </select>
                         </div>
             <div className="form-control mt-6">
-              <button className="btn  bg-[#0044BC] hover:bg-[#6BA6FF] text-white rounded border-none">
-                Register
+              <button  disabled={loading} className="btn  bg-[#0044BC] hover:bg-[#6BA6FF] text-white rounded border-none">
+           {loading ? (
+                <TbFidgetSpinner className='animate-spin m-auto' />
+              ) : (
+                'Continue'
+              )}
               </button>
             </div>
           </form>
+         
           <p className="text-center mb-4">
             Already have an account? Please {" "}
             <Link className="text-white font-bold" to="/login">

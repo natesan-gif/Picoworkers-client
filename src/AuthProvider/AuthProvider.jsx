@@ -2,7 +2,7 @@ import React, { createContext, useEffect, useState } from 'react';
 import { app } from '../Firebase/firebase.config';
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
-import {  GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile, } from 'firebase/auth';
+import {  GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthStateChanged,  sendPasswordResetEmail, signInWithEmailAndPassword, signInWithPopup, signOut, updateProfile, } from 'firebase/auth';
 import toast from 'react-hot-toast';
 import { Navigate } from 'react-router-dom';
 import axios from 'axios'
@@ -12,10 +12,11 @@ import useAxiosPublic from '../Hooks/useAxiosPublic';
    const googleProvider = new GoogleAuthProvider();
 
 const AuthProvider = ({ children }) => {
+    const axiosPublic = useAxiosPublic()
     const [user, setUser] = useState(null);
     const [loading, setLoading] = useState(true);
  
-    const axiosPublic = useAxiosPublic()
+    
     const createUser = (email, password) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
@@ -33,6 +34,10 @@ const AuthProvider = ({ children }) => {
     }
 
 
+  const resetPassword = email => {
+    setLoading(true)
+    return sendPasswordResetEmail(auth, email)
+  }
     const logOut = () => {
         setLoading(true);
           toast.success('Log out successfully')
@@ -46,15 +51,41 @@ const AuthProvider = ({ children }) => {
 return updateProfile(auth.currentUser, {
   displayName: name, photoURL: image
 })
-}
+    }
+      // Get token from server
+  const getToken = async email => {
+    const { data } = await axios.post(
+      `${import.meta.env.VITE_API_URL}/jwt`,
+      { email },
+
+    )
+    return data
+  }
+
+  // save user
+  const saveUser = async user => {
+      const currentUser = {
+          name: user?.displayName,
+      email: user?.email,
+      role: 'worker',
+      status: 'Verified',
+      }
+      console.log(currentUser)
+    // const { data } = await axios.put(
+    //   `${import.meta.env.VITE_API_URL}/user`,
+    //   currentUser
+    // )
+    // return data
+  }
     useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth,  (user) => {
-            setUser( (user));
-            if ((user)) {
-                 setUser(user)
-                 setLoading(false)
+        const unsubscribe = onAuthStateChanged(auth,  (  currentUser) => {
+            setUser( (  currentUser));
+            if ((  currentUser)) {
+                 setUser(  currentUser)
+                setLoading(false)
+                 saveUser(  currentUser)
                 //get token and store client
-                const userInfo = { email:  (user).email };
+                const userInfo = { email:  (  currentUser).email };
                 axiosPublic.post('/jwt', userInfo)
                     .then(res => {
                         if (res.data.token) {
@@ -83,6 +114,7 @@ return updateProfile(auth.currentUser, {
         logOut,
         user,
         loading,
+          setLoading,
         updateUserProfile,
         googleSignIn,
  setUser,
