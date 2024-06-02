@@ -9,6 +9,7 @@ import Login from "../Pages/Login/Login";
 import DashboardLayout from "../Layout/DashboardLayout";
 import AddTask from "../components/Dashboard/TaskCreator/AddTask";
 import MyTasks from "../components/Dashboard/TaskCreator/MyTasks";
+import PurchaseCoin from "../components/Dashboard/TaskCreator/PurchaseCoin";
 
 
 export const router = createBrowserRouter([
@@ -43,6 +44,10 @@ export const router = createBrowserRouter([
       {
         path: 'my-tasks',
         element:<MyTasks></MyTasks>
+      },
+      {
+        path: 'purchase-coin',
+        element:<PurchaseCoin></PurchaseCoin>
       }
     ]
   }
