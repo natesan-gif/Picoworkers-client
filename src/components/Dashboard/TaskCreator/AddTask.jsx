@@ -63,12 +63,12 @@ const AddTask = () => {
         taskCreator,
         image: image_url,
       }
-      console.table(taskData)
+      // console.table(taskData)
 
       //   Post request to server
       await mutateAsync(taskData)
     } catch (err) {
-      console.log(err)
+      // console.log(err)
       toast.error(err.message)
       setLoading(false)
     }

@@ -22,7 +22,7 @@ const { data: fetchedItems, isLoading, refetch } = useQuery(
       const response = await axiosSecure.get(`/myTask/${user?.email}`);
       return response.data;
     },
-   
+ 
   },
   );
   const deleteMutation = useMutation({

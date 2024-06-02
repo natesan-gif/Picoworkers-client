@@ -70,7 +70,7 @@ return updateProfile(auth.currentUser, {
       role: 'worker',
       status: 'Verified',
       }
-      console.log(currentUser)
+      // console.log(currentUser)
     // const { data } = await axios.put(
     //   `${import.meta.env.VITE_API_URL}/user`,
     //   currentUser
