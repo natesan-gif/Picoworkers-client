@@ -38,9 +38,15 @@ const Sidebar = () => {
       <div className='bg-gray-100 text-gray-800 flex justify-between md:hidden'>
         <div>
           <div className='block cursor-pointer p-4 font-bold'>
-            <Link to='/'>
-              <p>PicoWorker</p>
-            </Link>
+              <Link to='/'>
+              <Typography
+              as="a"
+              href="#"
+              className="mr-1 md:mr-2 cursor-pointer py-1.5 font-bold pl-2 md:pl-6 text-xl text-[#416EF0] "
+            >
+          PicoWorker
+            </Typography>
+              </Link>
           </div>
         </div>
 
