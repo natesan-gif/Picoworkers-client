@@ -3,12 +3,12 @@ import moment from "moment";
 
 const DashboardFooter = () => {
     return (
-       <div>
-      <footer className="footer footer-center py-4 bg-black text-[#fff4ed]">
+       <div className="ml-64">
+      <footer className="footer footer-center  py-4 bg-black text-[#fff4ed]">
               <aside>
                   <div>
                      
-                        <h2 className="flex items-center text-2xl gap-2 pt-8">
+                        <h2 className="flex items-center  text-2xl gap-2 pt-8">
             <span className=""> PicoWorker</span>
        {/* <img src="" alt="" className=" w-10 h-10" /> */}
           </h2>
