@@ -83,12 +83,12 @@ const Sidebar = () => {
             {/*  Menu Items */}
             <nav>
               {/* Statistics */}
-              {/* <MenuItem
+              <MenuItem
                 label='Statistics'
                 address='/dashboard'
                 icon={BsGraphUp}
               />
-              {role === 'guest' && <GuestMenu />}
+              {/* {role === 'guest' && <GuestMenu />}
               {role === 'host' ? (
                 toggle ? (
                   <HostMenu />
