@@ -81,7 +81,7 @@ const AddTaskForm = ({
                       accept='image/*'
                       hidden
                     />
-                    <div className='bg-rose-500 text-white border bg-black border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-rose-500'>
+                    <div className='bg-rose-500 text-white border bg-[#0044BC] border-gray-300 rounded font-semibold cursor-pointer p-1 px-3 hover:bg-rose-500'>
                       {/* {imageText} */}
                       {imageText.length > 20
                         ? imageText.split('.')[0].slice(0, 15) +
@@ -135,7 +135,7 @@ const AddTaskForm = ({
         <button
           disabled={loading}
           type='submit'
-          className='w-full p-3 mt-5 text-center font-medium bg-black text-white transition duration-200 rounded shadow-md bg-rose-500'
+          className='w-full p-3 mt-5 text-center font-medium bg-[#0044BC] text-white transition duration-200 rounded shadow-md bg-rose-500'
         >
           {loading ? (
             <TbFidgetSpinner className='animate-spin m-auto' />

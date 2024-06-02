@@ -32,6 +32,7 @@ const SocialLogin = () => {
         name: result?.user?.displayName,
         // Assuming data.role is defined elsewhere
         role: "worker",
+        coins:10,
       };
 
       const response = await axiosPublic.post("/users", userInfo);

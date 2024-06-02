@@ -52,12 +52,15 @@ const Register = () => {
         const result = await createUser(email, password);
         await updateUserProfile(yourName, photoURL);
         setUser({ ...result?.user, photoURL: photoURL, displayName: yourName });
-
+    let coins = 0;
+        if (role === "worker") coins = 10;
+        else if (role === "taskCreator") coins = 50;
         const userInfo = {
           email: result?.user?.email,
           image: photoURL,
           name: yourName,
-          role: data.role, // Assuming data.role is defined elsewhere
+          role: data.role,
+          coins: coins,// Assuming data.role is defined elsewhere
         };
 
         const response = await axiosPublic.post("/users", userInfo);

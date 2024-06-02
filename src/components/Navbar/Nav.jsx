@@ -152,7 +152,7 @@ function redirectToYoutube() {
             {user ? (
               <button
                 onClick={handleSignOut}
-                className="btn bg-[#0044BC]  text-white rounded "
+                className="btn bg-[#0044BC] text-white rounded "
               >
                 {" "}
                 LogOut
