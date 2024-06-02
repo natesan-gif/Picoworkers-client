@@ -7,7 +7,7 @@ import {
 } from "@material-tailwind/react";
 import { Link, NavLink, Navigate} from "react-router-dom";
 import { Tooltip } from "react-tooltip";
-import useAuth from "../../Hooks/useAuth";
+import useAuth from "../../Hooks/useAuth.jsx";
 const Nav = () => {
   const storedTheme = localStorage.getItem("theme");
   const [theme, setTheme] = useState(storedTheme || "light");

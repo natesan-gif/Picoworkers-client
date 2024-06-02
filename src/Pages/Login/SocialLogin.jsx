@@ -3,7 +3,7 @@ import toast, { Toaster } from "react-hot-toast";
 import { useLocation, useNavigate } from "react-router-dom";
 
 import { useEffect } from "react";
-import useAuth from "../../Hooks/useAuth";
+import useAuth from "../../Hooks/useAuth.jsx";
 // import axios from "axios";
 
 const SocialLogin = () => {

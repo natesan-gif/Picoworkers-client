@@ -4,7 +4,7 @@ import { useForm } from 'react-hook-form';
 import login from '../../assets/login.json'
 import toast, { Toaster } from 'react-hot-toast';
 import { Helmet } from 'react-helmet-async';
-import useAuth from '../../Hooks/useAuth';
+import useAuth from '../../Hooks/useAuth.jsx';
 import SocialLogin from './SocialLogin';
 import Lottie from 'lottie-react';
 import axios from 'axios';

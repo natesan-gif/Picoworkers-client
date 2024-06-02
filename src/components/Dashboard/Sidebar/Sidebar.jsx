@@ -12,10 +12,13 @@ import { Link } from 'react-router-dom'
 // import useRole from '../../../hooks/useRole'
 // import MenuItem from './Menu/MenuItem'
 import ToggleButton from '../../Shared/Button/ToggleButton'
-import useAuth from '../../../Hooks/useAuth'
-import useRole from '../../../Hooks/useRole'
+import useAuth from '../../../Hooks/useAuth.jsx'
+import useRole from '../../../Hooks/useRole.jsx'
 import MenuItem from './MenuItem/MenuItem'
 import { Typography } from '@material-tailwind/react'
+import AdminMenu from './Menu/AdminMenu.jsx'
+import TaskCreatorMenu from './Menu/TaskCreatorMenu.jsx'
+import WorkerMenu from './Menu/WorkerMenu.jsx'
 
 
 const Sidebar = () => {
@@ -88,12 +91,7 @@ const Sidebar = () => {
 
             {/*  Menu Items */}
             <nav>
-              {/* Statistics */}
-              <MenuItem
-                label='Statistics'
-                address='/dashboard'
-                icon={BsGraphUp}
-              />
+    
               {/* {role === 'guest' && <GuestMenu />}
               {role === 'host' ? (
                 toggle ? (
@@ -103,20 +101,15 @@ const Sidebar = () => {
                 )
               ) : undefined}
               {role === 'admin' && <AdminMenu />} */}
+              <WorkerMenu></WorkerMenu>
+              <TaskCreatorMenu></TaskCreatorMenu>
+              <AdminMenu></AdminMenu>
             </nav>
           </div>
         </div>
 
         <div>
           <hr />
-
-          {/* Profile Menu */}
-          <MenuItem
-            label='Profile'
-            address='/dashboard/profile'
-            icon={FcSettings}
-          />
-
           <button
             onClick={logOut}
             className='flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform'

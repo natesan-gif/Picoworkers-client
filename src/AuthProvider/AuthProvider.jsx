@@ -6,7 +6,7 @@ import {  GoogleAuthProvider, createUserWithEmailAndPassword, getAuth, onAuthSta
 import toast from 'react-hot-toast';
 import { Navigate } from 'react-router-dom';
 import axios from 'axios'
-import useAxiosPublic from '../Hooks/useAxiosPublic';
+import useAxiosPublic from '../Hooks/useAxiosPublic.jsx';
 //social auth provider
 
    const googleProvider = new GoogleAuthProvider();
