@@ -45,7 +45,7 @@ const Nav = () => {
 
   const navList = (
     <ul className="mt-2 mb-4 pl-4 lg:pr-12 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-      <Typography
+      {/* <Typography
         as="li"
         variant="small"
         color="blue-gray"
@@ -63,8 +63,32 @@ const Nav = () => {
         >
           Home
         </NavLink>
-      </Typography>
-     
+      </Typography> */}
+      {
+        user ? <Typography
+        as="li"
+        variant="small"
+        color="blue-gray"
+        className="p-1 font-bold"
+      >
+        <NavLink
+          to="/dashboard"
+         className={({ isActive, isPending }) =>
+            isPending
+              ? "pending"
+              : isActive
+              ? "text-[#0044BC] border-b-4 font-bold border-[#0044BC]"
+              : "hover:text-[#0044BC] font-bold"
+          }
+        >
+         Dashboard
+        </NavLink>
+        </Typography> :
+          <button className="btn bg-[#0044BC] hover:bg-[#6BA6FF]  text-white rounded ">
+                   Watch
+                  </button>
+    }
+   
     </ul>
   );
 
@@ -128,7 +152,8 @@ const Nav = () => {
                 LogOut
               </button>
             ) : (
-              <div className="flex gap-2">
+                <div className="flex gap-2">
+                   
                 <Link to="/login">
                   <button className="btn bg-[#0044BC] hover:bg-[#6BA6FF]  text-white rounded ">
                     Login

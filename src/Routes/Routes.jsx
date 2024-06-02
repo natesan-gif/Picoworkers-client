@@ -8,6 +8,7 @@ import Register from "../Pages/Register/Register";
 import Login from "../Pages/Login/Login";
 import DashboardLayout from "../Layout/DashboardLayout";
 
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -23,9 +24,10 @@ export const router = createBrowserRouter([
             element:<Register></Register>
           },
           {
-            path: 'login',
+            path: '/login',
             element:<Login></Login>
           }
+       
     ]
   },
   {

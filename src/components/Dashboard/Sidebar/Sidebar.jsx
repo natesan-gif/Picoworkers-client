@@ -15,6 +15,7 @@ import ToggleButton from '../../Shared/Button/ToggleButton'
 import useAuth from '../../../Hooks/useAuth'
 import useRole from '../../../Hooks/useRole'
 import MenuItem from './MenuItem/MenuItem'
+import { Typography } from '@material-tailwind/react'
 
 
 const Sidebar = () => {
@@ -61,7 +62,13 @@ const Sidebar = () => {
           <div>
             <div className='w-full hidden md:flex px-4 py-2 shadow-lg rounded-lg justify-center items-center bg-rose-100 mx-auto'>
               <Link to='/'>
-            <p>PicoWorker</p>
+              <Typography
+              as="a"
+              href="#"
+              className="mr-1 md:mr-2 cursor-pointer py-1.5 font-bold pl-2 md:pl-6 text-xl text-[#416EF0] "
+            >
+          PicoWorker
+            </Typography>
               </Link>
             </div>
           </div>
