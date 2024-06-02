@@ -1,19 +1,19 @@
 import toast, { Toaster } from "react-hot-toast";
-
+import Swal from "sweetalert2";
+import useAxiosPublic from "../../Hooks/useAxiosPublic.jsx";
 import { useLocation, useNavigate } from "react-router-dom";
-
 import { useEffect } from "react";
 import useAuth from "../../Hooks/useAuth.jsx";
-// import axios from "axios";
+import LoadingSpinner from "../../components/Spinner/LoadingSpinner.jsx";
+
 
 const SocialLogin = () => {
   const { googleSignIn, user, loading } = useAuth();
+ const axiosPublic = useAxiosPublic();
 
-  //navigation
   const navigate = useNavigate();
   const location = useLocation();
   const from = location?.state || "/";
-  // console.log(location)
   useEffect(() => {
     if (user) {
       navigate("/");
@@ -21,30 +21,38 @@ const SocialLogin = () => {
   });
 
   const handleGoogleSignIn = async () => {
-    try {
+       try {
       // 1. google sign in from firebase
-      const result = await googleSignIn();
-      // console.log(result.user);
+         const result = await googleSignIn();
+         console.log(result.user)
+      const userInfo = {
+        email: result?.user?.email,
+        image: result?.user?.photoURL,
+        // Assuming you have yourName defined somewhere
+        name: result?.user?.displayName,
+        // Assuming data.role is defined elsewhere
+        role: "worker",
+      };
 
-      //2. get token from server using email
-    //   const { data } = await axios.post(
-    //     `${import.meta.env.VITE_API_URL}/jwt`,
-    //     {
-    //       email: result?.user?.email,
-    //     },
-    //     { withCredentials: true }
-    //   );
-      console.log(result);
-      toast.success("Sign in Successfully");
-      navigate(from, { replace: true });
+      const response = await axiosPublic.post("/users", userInfo);
+
+      if (response.data.insertedId) {
+        Swal.fire({
+          position: "top-end",
+          icon: "success",
+          title: "User created successfully",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        navigate(from, { replace: true });
+      }
     } catch (err) {
       console.log(err);
-      toast.error(err?.message);
     }
   };
 
 
-  if (user || loading) return;
+  if (user || loading) return <LoadingSpinner></LoadingSpinner>;
   return (
     <div className="my-2 space-y-2">
     

@@ -18,7 +18,10 @@ const Nav = () => {
     // Apply the theme to the HTML element
     document.querySelector("html").setAttribute("data-theme", theme);
   }, [theme]);
-
+function redirectToYoutube() {
+  const url = "https://www.youtube.com/watch?v=IAI6hspV6Bg"
+  location.replace(url)
+}
  const handleToggle = () => {
     // Toggle between "light" and "dark" themes
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
@@ -84,9 +87,12 @@ const Nav = () => {
          Dashboard
         </NavLink>
         </Typography> :
-          <button className="btn bg-[#0044BC] hover:bg-[#6BA6FF]  text-white rounded ">
+          
+        
+    <button onClick={redirectToYoutube}  className="btn bg-[#0044BC] hover:bg-[#6BA6FF]  text-white rounded ">
                    Watch
-                  </button>
+          </button>
+
     }
    
     </ul>

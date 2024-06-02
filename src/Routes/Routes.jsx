@@ -7,6 +7,8 @@ import ErrorPage from "../Pages/ErrorPage/ErrorPage";
 import Register from "../Pages/Register/Register";
 import Login from "../Pages/Login/Login";
 import DashboardLayout from "../Layout/DashboardLayout";
+import AddTask from "../components/Dashboard/TaskCreator/AddTask";
+import MyTasks from "../components/Dashboard/TaskCreator/MyTasks";
 
 
 export const router = createBrowserRouter([
@@ -32,7 +34,17 @@ export const router = createBrowserRouter([
   },
   {
     path: '/dashboard',
-    element:<DashboardLayout></DashboardLayout>
+    element: <DashboardLayout></DashboardLayout>,
+    children: [  
+      {
+        path: 'add-task',
+        element:<AddTask></AddTask>
+      },
+      {
+        path: 'my-tasks',
+        element:<MyTasks></MyTasks>
+      }
+    ]
   }
 ]);
 

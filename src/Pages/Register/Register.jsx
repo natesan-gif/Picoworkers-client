@@ -12,11 +12,12 @@ import useAxiosPublic from "../../Hooks/useAxiosPublic.jsx";
 import { TbFidgetSpinner } from "react-icons/tb";
 import SocialLogin from "../Login/SocialLogin";
 import Spinner from "../../components/Spinner/Spinner";
+import Swal from 'sweetalert2';
 // import axios from "axios";
   const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
   const image_hosting_api =`https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 const Register = () => {
-  const { createUser, updateUserProfile, user, loading, setUser } = useAuth();
+  const { createUser, updateUserProfile, user, loading, setUser, reset } = useAuth();
   const navigate = useNavigate();
   const axiosPublic=useAxiosPublic()
   const from = "/";
@@ -34,41 +35,49 @@ const Register = () => {
   } = useForm();
 
   const onSubmit = async (data) => {
-     //  console.log(data) 
-        //image upload to the imgbb and then get an url
-        const imageFile={image:data.image[0]}
-        const res = await axiosPublic.post(image_hosting_api, imageFile, {
-            headers: {
-                'content-Type': 'multipart/form-data',
-            }
-        });
+    //  console.log(data) 
+    //image upload to the imgbb and then get an url
+    const imageFile = { image: data.image[0] }
+    const res = await axiosPublic.post(image_hosting_api, imageFile, {
+      headers: {
+        'content-Type': 'multipart/form-data',
+      }
+    });
     // console.log(res.data)
     if (res.data.success) {
-      const photoURL= res.data.data.display_url
-      const { email, password, yourName,  role  } = data;
+      const photoURL = res.data.data.display_url
+      const { email, password, yourName, role } = data;
       console.log(data)
-    
       try {
         const result = await createUser(email, password);
-        // Register successful, update user profile
         await updateUserProfile(yourName, photoURL);
         setUser({ ...result?.user, photoURL: photoURL, displayName: yourName });
-        // const { data } = await axios.post(
-        //   `${import.meta.env.VITE_API_URL}/jwt`,
-        //   {
-        //     email: result?.user?.email,
-        //   },
-        //   { withCredentials: true }
-        // );
-        // console.log(data);
-        navigate(from, { replace: true });
-        toast.success("Sign up Successful");
+
+        const userInfo = {
+          email: result?.user?.email,
+          image: photoURL,
+          name: yourName,
+          role: data.role, // Assuming data.role is defined elsewhere
+        };
+
+        const response = await axiosPublic.post("/users", userInfo);
+
+        if (response.data.insertedId) {
+
+          Swal.fire({
+            position: "top-end",
+            icon: "success",
+            title: "User created successfully",
+            showConfirmButton: false,
+            timer: 1500,
+          });
+          navigate(from, { replace: true });
+        }
       } catch (err) {
         console.log(err);
-        toast.error(err?.message);
       }
     }
-  };
+  }
   if (user || loading) return;
   return (
     <div>

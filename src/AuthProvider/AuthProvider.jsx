@@ -118,7 +118,7 @@ return updateProfile(auth.currentUser, {
         updateUserProfile,
         googleSignIn,
  setUser,
-      
+      saveUser,
     };
 
     return (

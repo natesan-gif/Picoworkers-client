@@ -12,12 +12,12 @@ const TaskCreatorMenu = () => {
       <MenuItem
         icon={MdAddTask}
         label='Add new Tasks'
-        address='my-task'
+        address='add-task'
       />
       <MenuItem
         icon={FaTasks}
         label='My Tasks'
-        address='my-task'
+        address='my-tasks'
       />
       <MenuItem
         icon={BsCoin}

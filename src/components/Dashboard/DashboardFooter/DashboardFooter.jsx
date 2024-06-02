@@ -3,7 +3,7 @@ import moment from "moment";
 
 const DashboardFooter = () => {
     return (
-       <div className="ml-64">
+       <div className="md:ml-64">
       <footer className="footer footer-center  py-4 bg-black text-[#fff4ed]">
               <aside>
                   <div>
