@@ -7,35 +7,10 @@ import { useMutation, useQuery } from "@tanstack/react-query";
 import LoadingSpinner from '../../Spinner/LoadingSpinner';
 import useAuth from '../../../Hooks/useAuth';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
-import useAxiosPublic, { axiosPublic } from '../../../Hooks/useAxiosPublic';
-import Modal from 'react-modal';
-const customStyles = {
-  content: {
-    top: '50%',
-    left: '50%',
-    right: 'auto',
-    bottom: 'auto',
-    marginRight: '-50%',
-    transform: 'translate(-50%, -50%)',
-  },
-};
-// Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
-Modal.setAppElement('#root');
+import useAxiosPublic from '../../../Hooks/useAxiosPublic';
+import { Link } from 'react-router-dom';
+
 const MyTasks = () => {
-  	const [modalIsOpen, setIsOpen] = React.useState(false);
-
-  function openModal() {
-    setIsOpen(true);
-  }
-
-  function afterOpenModal() {
-    // references are now sync'd and can be accessed.
-    subtitle.style.color = '#f00';
-  }
-
-  function closeModal() {
-    setIsOpen(false);
-	}
     const [items, setItems] = useState([]);
 
   const { user } = useAuth() || {};
@@ -48,12 +23,7 @@ const { data: fetchedItems, isLoading, refetch } = useQuery(
       const response = await axiosSecure.get(`/myTask/${user?.email}`);
       return response.data;
     },
- 
   },
-
-
-
-  //delete operation
   );
   const deleteMutation = useMutation({
     mutationFn: (_id) => axiosPublic.delete(`/tasks/${_id}`),
@@ -131,11 +101,11 @@ const { data: fetchedItems, isLoading, refetch } = useQuery(
                           {item.amount} $
                  </td>
                   <td>
-                  
-                      <button className=" text-[#0044BC] bg-transparent text-2xl ">
+                      <Link to={`/dashboard/update-task/${item._id}`}>
+                      <button className=" text-[#0044BC]  bg-transparent text-2xl ">
                     <FaEdit />
                       </button>
-                 
+                    </Link>
                   </td>
                   <td>
                     <button

@@ -1,7 +1,7 @@
 import React from 'react';
 import MenuItem from '../MenuItem/MenuItem';
 import { BsCoin, BsFillHouseAddFill } from 'react-icons/bs';
-import { FaHistory, FaTasks } from 'react-icons/fa';
+import { FaEdit, FaHistory, FaTasks } from 'react-icons/fa';
 import { MdAddTask } from 'react-icons/md';
 
 const TaskCreatorMenu = () => {
@@ -19,6 +19,11 @@ const TaskCreatorMenu = () => {
         label='My Tasks'
         address='my-tasks'
       />
+      {/* <MenuItem
+        icon={FaEdit}
+        label='Update Task'
+        address='update-task'
+      /> */}
       <MenuItem
         icon={BsCoin}
         label='Purchase Coin'

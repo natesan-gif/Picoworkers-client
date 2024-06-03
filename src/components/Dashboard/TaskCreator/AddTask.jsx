@@ -18,8 +18,6 @@ const AddTask = () => {
   const [imagePreview, setImagePreview] = useState()
   const [imageText, setImageText] = useState('Upload Image')
 
-
-
   const { mutateAsync } = useMutation({
     mutationFn: async taskData => {
       const { data } = await axiosPublic.post(`/tasks`, taskData)
