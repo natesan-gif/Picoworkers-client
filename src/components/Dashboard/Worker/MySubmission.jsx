@@ -120,7 +120,7 @@ console.log(item)
                     <td className='px-2 py-3 border-b border-gray-200 bg-white text-sm'>{submission.worker_name}</td>
                     <td className='px-2 py-3 border-b border-gray-200 bg-white text-sm'>{submission.taskCreator_name}</td>
                     <td className='px-2 py-3 border-b border-gray-200 bg-white text-sm'>{submission.current_date}</td>
-                    <td className='px-2 py-3 border-b border-gray-200 bg-white text-sm'>{submission.status}</td>
+                    <td className=' m-2 inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm items-center mt-2'>{submission.status}</td>
                    
                   </tr>
                 ))}
