@@ -8,9 +8,10 @@ import useAuth from '../../Hooks/useAuth.jsx';
 import SocialLogin from './SocialLogin';
 import Lottie from 'lottie-react';
 import axios from 'axios';
+import LoadingSpinner from '../../components/Spinner/LoadingSpinner.jsx';
 
 const Login = () => {
-    const { signInUser, user,loading } = useAuth();
+   const { signInUser, user,loading } = useAuth();
     const navigate = useNavigate();
     const location = useLocation();
     const from = location?.state || '/';
@@ -65,7 +66,7 @@ const Login = () => {
     }
   }
 
-    if (user || loading) return;
+    if (user || loading) return <LoadingSpinner></LoadingSpinner>;
     return (
         <div>
             <div className="flex w-full max-w-sm  mx-auto mt-12 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-4xl">

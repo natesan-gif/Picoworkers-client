@@ -7,7 +7,7 @@ import { MdAddTask } from 'react-icons/md';
 const TaskCreatorMenu = () => {
     return (
         <>
-      <MenuItem icon={BsFillHouseAddFill} label='Home' address='/dashboard' />
+      <MenuItem icon={BsFillHouseAddFill} label='Home' address='task-creator-home' />
    
       <MenuItem
         icon={MdAddTask}

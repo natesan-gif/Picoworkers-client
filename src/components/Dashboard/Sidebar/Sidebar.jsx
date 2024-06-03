@@ -101,9 +101,18 @@ const Sidebar = () => {
                 )
               ) : undefined}
               {role === 'admin' && <AdminMenu />} */}
-              <WorkerMenu></WorkerMenu>
-              <TaskCreatorMenu></TaskCreatorMenu>
+             
+              {
+                role === 'worker' &&  <WorkerMenu></WorkerMenu>
+            }
+              {
+                role === 'taskCreator' && <TaskCreatorMenu></TaskCreatorMenu>
+            }
+              {
+                role === 'admin' && 
               <AdminMenu></AdminMenu>
+            }
+            
             </nav>
           </div>
         </div>
