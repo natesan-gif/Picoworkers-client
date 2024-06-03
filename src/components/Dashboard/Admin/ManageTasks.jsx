@@ -1,9 +1,117 @@
-import React from 'react';
+import { useMutation, useQuery } from '@tanstack/react-query';
+import React, { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet-async';
+import useAuth from '../../../Hooks/useAuth';
+import useAxiosSecure from '../../../Hooks/useAxiosSecure';
+import useAxiosPublic from '../../../Hooks/useAxiosPublic';
+import Swal from 'sweetalert2';
+import LoadingSpinner from '../../Spinner/LoadingSpinner';
+import { FaEdit, FaEye } from 'react-icons/fa';
+import { MdDelete } from 'react-icons/md';
 
 const ManageTasks = () => {
+
+    const [items, setItems] = useState([]);
+
+  const { user } = useAuth() || {};
+  const axiosSecure = useAxiosSecure();
+  const axiosPublic = useAxiosPublic();
+    const { data: fetchedItems, isLoading, refetch } = useQuery(
+        {
+            queryKey: ["tasks"],
+            queryFn: async () => {
+                const response = await axiosSecure.get(`/tasks`);
+                return response.data;
+            },
+        },
+    );
+// console.log(fetchedItems)
+     const deleteMutation = useMutation({
+    mutationFn: (_id) => axiosPublic.delete(`/tasks/${_id}`),
+    onSuccess: () => {
+      Swal.fire("Deleted!", "Task has been deleted", "success");
+      refetch();
+    },
+    onError: (error) => {
+      console.error("Error deleting task:", error);
+    },
+  });
+
+  const handleDelete = (_id) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: "You won't be able to revert this!",
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "##0044BC",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        deleteMutation.mutate(_id); 
+      }
+    });
+  };
+
+  useEffect(() => {
+    if (fetchedItems) {
+      setItems(fetchedItems);
+    }
+  }, [fetchedItems]);
+
+  if(isLoading) return <LoadingSpinner></LoadingSpinner>
     return (
         <div>
-            
+              <Helmet>
+          <title> Manage Tasks | Dashboard</title>
+            </Helmet>
+            <div className="mx-auto text-center space-y-4">
+                <h2 className="pt-6 text-2xl lg:text-4xl font-bold text-black">Tasks</h2>
+                <div className="overflow-x-auto whitespace-nowrap">
+                    <table className="table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Task Title</th>
+                                <th>TaskCreator Name</th>
+                                <th>Task Count</th>
+                                <th>Coin Needed</th>
+                                <th>Availability</th>
+                                <th>View Task</th>
+                                <th>Availability</th>
+                                <th>Delete Task</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                         {items.map((task, index) => (
+                                <tr key={task._id}> 
+                                 <td>{index + 1}</td>
+                                    <td>{task.title}</td>
+                                    <td>{task.taskCreator.name}</td>
+                                    <td>{task.quantity}</td>
+                                    <td>{task.price}</td>
+                                    <td></td> 
+                                   <td>
+                                        
+                                            <button className="text-[#0044BC] bg-transparent text-2xl">
+                                                <FaEye />
+                                            </button>
+                                      
+                                    </td>
+                                    <td>
+                                        <button
+                                            onClick={() => handleDelete(task._id)}
+                                            className="text-[#0044BC] bg-transparent text-2xl"
+                                        >
+                                            <MdDelete />
+                                        </button>
+                                    </td> 
+                                 </tr>
+                            ))} 
+                        </tbody>
+                    </table>
+                </div> 
+            </div>
         </div>
     );
 };

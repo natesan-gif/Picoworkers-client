@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import { useQuery } from '@tanstack/react-query';
 import useAuth from '../../../Hooks/useAuth';
+import { Helmet } from 'react-helmet-async';
 
 const AdminHome = () => {
     const { user } = useAuth() || {};
@@ -34,6 +35,10 @@ const AdminHome = () => {
 
     return (
         <div className="w-full min-h-[calc(100vh-400px)] flex flex-col justify-center items-center text-gray-800 rounded-xl bg-gray-50">
+             <Helmet>
+          <title>Admin Home| Dashboard</title>
+        </Helmet>
+           
             <div className="mx-auto text-center space-y-4">
                 <h2 className="pt-6 text-2xl lg:text-4xl font-bold text-black">States</h2>
             </div>

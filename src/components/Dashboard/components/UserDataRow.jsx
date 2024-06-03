@@ -93,7 +93,7 @@ const UserDataRow = ({ user, refetch }) => {
       <td className='px-5 py-5 border-b border-gray-200 bg-white text-sm'>
         <button
           onClick={() => setIsOpen(true)}
-          className='relative cursor-pointer inline-block px-3 py-1 font-semibold text-blue-900 leading-tight'
+          className='relative cursor-pointer inline-block px-4 py-2 font-semibold text-blue-900 leading-tight'
         >
           <span
             aria-hidden='true'
@@ -115,7 +115,7 @@ const UserDataRow = ({ user, refetch }) => {
                     className='inline-flex justify-center rounded-full border border-transparent bg-red-100 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2'
             
                   >
-                  Remove
+                  Remove User
                   </button>
       </td>
     </tr>
