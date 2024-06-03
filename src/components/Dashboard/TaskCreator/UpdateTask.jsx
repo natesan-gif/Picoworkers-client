@@ -57,16 +57,11 @@ const UpdateTask = () => {
     const form = e.target;
     const title = form.title.value;
     const detail = form.task_detail.value;
-      const quantity = parseInt(form.task_quantity.value, 10);
-      const amount = parseFloat(form.payable_amount.value);
-// Calculate price
-    const price = amount * quantity;
+   const info = form.submission_info.value; 
     const updatedTaskItem = {
       title,
       detail,
-        quantity,
-        amount,
-      price,
+       info
     };
     mutation.mutate(updatedTaskItem);
   };
@@ -104,34 +99,21 @@ const UpdateTask = () => {
                 defaultValue={item?.detail || ''}
               ></textarea>
             </div>
-              <div className='space-y-1 text-sm'>
-                <label htmlFor='quantity' className='block text-gray-600'>
-                  Task Quantity
-                </label>
-                <input
-                  className='w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md'
-                  name='task_quantity'
-                  id='quantity'
-                  type='number'
-                  placeholder='Task Quantity'
-                  defaultValue={item?.quantity !== undefined && item?.quantity !== null ? item.quantity : ''}
-                  required
-                />
-              </div>
-            <div className='space-y-1 text-sm'>
-                <label htmlFor='amount' className='block text-gray-600'>
-                  Payable Amount
-                </label>
-                <input
-                  className='w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md '
-                  name='payable_amount'
-                  id='amount'
-                  type='number'
-                              placeholder='Payable Amount'
-                               defaultValue={item?.amount !== undefined && item?.quantity !== null ? item.amount : ''}
-                  required readOnly
-                />
-              </div>
+             <div className='space-y-1 text-sm'>
+              <label htmlFor='info' className='block text-gray-600'>
+               Submission Info
+              </label>
+              <input
+                className='w-full px-4 py-3 text-gray-800 border border-rose-300 focus:outline-rose-500 rounded-md '
+                name='submission_info'
+                id='info'
+                type='text'
+                              placeholder='Submission Info'
+                                 defaultValue={item?.info || ''}
+                required
+              />
+            </div>
+        
           </div>
         </div>
 
