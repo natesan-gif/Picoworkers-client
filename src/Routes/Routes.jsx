@@ -19,6 +19,10 @@ import AdminHome from "../components/Dashboard/Admin/AdminHome";
 import AdminRoute from "./AdminRoute";
 import ManageTasks from "../components/Dashboard/Admin/ManageTasks";
 import ManageUsers from "../components/Dashboard/Admin/ManageUsers";
+import WorkerHome from "../components/Dashboard/Worker/WorkerHome";
+import TaskList from "../components/Dashboard/Worker/TaskList";
+import MySubmission from "../components/Dashboard/Worker/MySubmission";
+import ViewDetails from "../components/Dashboard/components/ViewDetails";
 
 
 export const router = createBrowserRouter([
@@ -72,11 +76,24 @@ export const router = createBrowserRouter([
         </PrivateRoute>
     },
     
+      {
+        path:'worker-home',
+        element:<WorkerHome></WorkerHome>
+    },
+  
+      {
+        path: 'task-list',
+        element:<TaskList></TaskList>
+      },
+      {
+        path: 'my-submission',
+        element:<MySubmission></MySubmission>
+    },
     
-    
-    
-    
-    
+      {
+        path: 'view-details/:id',
+        element:<ViewDetails></ViewDetails>
+    },
     
     
     //taskCreator Menu

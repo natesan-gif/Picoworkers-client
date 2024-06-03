@@ -140,7 +140,7 @@ const ManageTasks = () => {
                         contentLabel="Example Modal"
                       >
                         
-                        <button className="absolute top-0 right-0 bg-blue-100 p-2 text-sm font-medium rounded-full text-blue-900 hover:text-blue-700 hover:bg-blue-500 focus:outline-none" onClick={closeModal}><MdClose></MdClose> </button>
+                        <button className="absolute top-0 right-0 bg-blue-100 p-2 text-sm font-medium rounded-full text-blue-900 Z-10hover:text-blue-700 hover:bg-blue-500 focus:outline-none" onClick={closeModal}><MdClose></MdClose> </button>
                         <div className="p-4">Task Detail: {task.detail}</div>
                       </Modal>
                     
