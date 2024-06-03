@@ -122,9 +122,5 @@ const UserDataRow = ({ user, refetch }) => {
   )
 }
 
-UserDataRow.propTypes = {
-  user: PropTypes.object,
-  refetch: PropTypes.func,
-}
 
 export default UserDataRow
