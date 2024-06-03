@@ -13,7 +13,7 @@ import {
 } from '@headlessui/react'
 import { BsCheckLg } from 'react-icons/bs'
 import { AiOutlineDown } from 'react-icons/ai'
-const roles = ['worker', 'tskCreator', 'admin']
+const roles = ['worker', 'taskCreator', 'admin']
 
 const UpdateUserModal = ({ setIsOpen, isOpen, modalHandler, user }) => {
   const [selected, setSelected] = useState(user.role)
