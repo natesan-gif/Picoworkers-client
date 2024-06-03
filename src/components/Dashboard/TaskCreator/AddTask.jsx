@@ -40,9 +40,9 @@ const AddTask = () => {
     const form = e.target
       const title = form.title.value;
       const detail = form.task_detail.value; 
-      const quantity = form.task_quantity.value; 
+      const quantity = parseInt(form.task_quantity.value, 10); 
       const info = form.submission_info.value; 
-      const amount = form.payable_amount.value;
+    const amount = parseFloat(form.payable_amount.value);
       const date = form.completion_date.value;
     const image = form.image.files[0]
     const taskCreator = {
@@ -50,7 +50,8 @@ const AddTask = () => {
       image: user?.photoURL,
       email: user?.email,
     }
-
+   // Calculate price
+    const price = amount * quantity;
     try {
       const image_url = await imageUpload(image)
       const taskData = {
@@ -62,6 +63,7 @@ const AddTask = () => {
           date,
         taskCreator,
         image: image_url,
+        price,
       }
       // console.table(taskData)
 

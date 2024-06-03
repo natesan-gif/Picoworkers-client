@@ -8,8 +8,34 @@ import LoadingSpinner from '../../Spinner/LoadingSpinner';
 import useAuth from '../../../Hooks/useAuth';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import useAxiosPublic, { axiosPublic } from '../../../Hooks/useAxiosPublic';
-
+import Modal from 'react-modal';
+const customStyles = {
+  content: {
+    top: '50%',
+    left: '50%',
+    right: 'auto',
+    bottom: 'auto',
+    marginRight: '-50%',
+    transform: 'translate(-50%, -50%)',
+  },
+};
+// Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
+Modal.setAppElement('#root');
 const MyTasks = () => {
+  	const [modalIsOpen, setIsOpen] = React.useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    subtitle.style.color = '#f00';
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+	}
     const [items, setItems] = useState([]);
 
   const { user } = useAuth() || {};
@@ -24,6 +50,10 @@ const { data: fetchedItems, isLoading, refetch } = useQuery(
     },
  
   },
+
+
+
+  //delete operation
   );
   const deleteMutation = useMutation({
     mutationFn: (_id) => axiosPublic.delete(`/tasks/${_id}`),
@@ -57,16 +87,7 @@ const { data: fetchedItems, isLoading, refetch } = useQuery(
       setItems(fetchedItems);
     }
   }, [fetchedItems]);
-     const getStatusClass = (status) => {
-    switch (status) {
-      case 'Available':
-        return 'text-green-500';
-      case 'Requested':
-        return 'text-red-500';
-      default:
-        return 'text-black';
-    }
-  };
+
   if(isLoading) return <LoadingSpinner></LoadingSpinner>
 
     return (

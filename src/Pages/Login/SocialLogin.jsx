@@ -35,9 +35,9 @@ const SocialLogin = () => {
         coins:10,
       };
 
-      const response = await axiosPublic.post("/users", userInfo);
+      const response = await axiosPublic.put("/users", userInfo);
 
-      if (response.data.insertedId) {
+      if (response.data.upsertedId) {
         Swal.fire({
           position: "top-end",
           icon: "success",

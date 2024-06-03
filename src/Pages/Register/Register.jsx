@@ -63,9 +63,9 @@ const Register = () => {
           coins: coins,// Assuming data.role is defined elsewhere
         };
 
-        const response = await axiosPublic.post("/users", userInfo);
-
-        if (response.data.insertedId) {
+        const response = await axiosPublic.put("/users", userInfo);
+console.log(response)
+        if (response.data.upsertedId) {
 
           Swal.fire({
             position: "top-end",
