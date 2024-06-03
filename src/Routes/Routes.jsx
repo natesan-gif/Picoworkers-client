@@ -15,6 +15,10 @@ import PaymentHistory from "../components/Dashboard/TaskCreator/PaymentHistory";
 import TaskCreatorHome from "../components/Dashboard/TaskCreator/TaskCreatorHome";
 import PrivateRoute from "./PrivateRoute";
 import TaskCreatorRoute from "./TaskCreatorRoute";
+import AdminHome from "../components/Dashboard/Admin/AdminHome";
+import AdminRoute from "./AdminRoute";
+import ManageTasks from "../components/Dashboard/Admin/ManageTasks";
+import ManageUsers from "../components/Dashboard/Admin/ManageUsers";
 
 
 export const router = createBrowserRouter([
@@ -42,6 +46,40 @@ export const router = createBrowserRouter([
     path: '/dashboard',
     element: <DashboardLayout></DashboardLayout>,
     children: [  
+      //admin menu
+      {
+        path: 'admin-home',
+        element: <PrivateRoute>
+          <AdminRoute>
+             <AdminHome></AdminHome>
+         </AdminRoute>
+        </PrivateRoute>
+    },
+      {
+        path: 'manage-users',
+        element: <PrivateRoute>
+          <AdminRoute>
+         <ManageUsers></ManageUsers>
+         </AdminRoute>
+        </PrivateRoute>
+    },
+      {
+        path: 'manage-tasks',
+        element: <PrivateRoute>
+          <AdminRoute>
+            <ManageTasks></ManageTasks>
+         </AdminRoute>
+        </PrivateRoute>
+    },
+    
+    
+    
+    
+    
+    
+    
+    
+    //taskCreator Menu
       {
         path: 'task-creator-home',
         element: <PrivateRoute>
