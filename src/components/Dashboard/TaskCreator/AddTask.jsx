@@ -67,6 +67,7 @@ const AddTask = () => {
 
       //   Post request to server
       await mutateAsync(taskData)
+      toast.success('task added successfully')
     } catch (err) {
       // console.log(err)
       toast.error(err.message)

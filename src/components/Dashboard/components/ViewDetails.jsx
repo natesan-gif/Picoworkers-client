@@ -5,6 +5,7 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import LoadingSpinner from "../../Spinner/LoadingSpinner";
+import toast from "react-hot-toast";
 
 const ViewDetails = () => {
   const { user } = useAuth();
@@ -49,7 +50,6 @@ const ViewDetails = () => {
     const submissionDetail = event.target.submission_detail.value;
 
     const submissionData = {
-     
       task_id: item?._id,
         task_title: item?.title,
         task_detail:item?.detail,
@@ -67,7 +67,8 @@ const ViewDetails = () => {
     try {
       const response = await axiosSecure.post('/submission', submissionData);
       if (response.status === 200) {
-        console.log('Submission successful', response.data);
+        toast.success('data added successfully')
+        // console.log('Submission successful', response.data);
         // Handle success (e.g., show a success message or redirect)
       }
     } catch (error) {

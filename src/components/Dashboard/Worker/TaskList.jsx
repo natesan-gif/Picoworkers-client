@@ -12,7 +12,7 @@ const TaskList = () => {
       const {
     data: fetchedItems,
     isLoading,
-    refetch,
+
   } = useQuery({
     queryKey: ["tasks"],
     queryFn: async () => {
