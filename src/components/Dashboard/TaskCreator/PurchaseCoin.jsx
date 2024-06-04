@@ -1,3 +1,5 @@
+import { Link } from "react-router-dom";
+import Payment from "../../Payment/Payment";
 
 
 const PurchaseCoin = () => {
@@ -10,7 +12,7 @@ Purchase Coin
         
             </div>
             <div className="grid gap-6 my-16 md:grid-cols-2 lg:grid-cols-4">
-			<div className="flex flex-col p-8 space-y-4 rounded-md bg-[#416EF0] text-white">
+			<Link to='/dashboard/payment' className="flex flex-col p-8 space-y-4 rounded-md bg-[#416EF0] text-white">
             
 				<p className="text-2xl font-semibold ">
 					10 coins =
@@ -19,7 +21,7 @@ Purchase Coin
 				1 dollar
                     </p>
             
-			</div>
+			</Link>
 			<div className="flex flex-col p-8 space-y-4 rounded-md bg-[#416EF0] text-white">
                   
 				<p className="text-2xl font-semibold ">
@@ -50,7 +52,7 @@ Purchase Coin
                     </p>
             
 			</div>
-			
+		
                 </div>
         </div>
     );

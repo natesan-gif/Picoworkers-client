@@ -9,8 +9,8 @@ const AdminHome = () => {
   const { user } = useAuth() || {};
   const axiosSecure = useAxiosSecure();
   const [userStats, setUserStats] = useState({ totalUsers: 0, totalCoins: 0 });
-const [items, setItems] = useState(null);
-  // Fetch user stats
+  const [items, setItems] = useState(null);
+
   const {
     data: fetchedUserStats,
     isLoading: isLoadingUserStats,
@@ -20,7 +20,7 @@ const [items, setItems] = useState(null);
       const response = await axiosSecure.get(`/userStats`);
       return response.data;
     },
-    enabled: !!user?.email, // Only fetch if user email is available
+    enabled: !!user?.email,
   });
 
   useEffect(() => {
@@ -29,12 +29,10 @@ const [items, setItems] = useState(null);
     }
   }, [fetchedUserStats]);
 
-      // Fetch user data
   const { data: fetchedItems, isLoading: isLoadingWithdraw } = useQuery({
     queryKey: ["withdraw"],
     queryFn: async () => {
-        const response = await axiosSecure.get(`/withdraw`);
-     
+      const response = await axiosSecure.get(`/withdraw`);
       return response.data;
     },
   });
@@ -45,11 +43,27 @@ const [items, setItems] = useState(null);
     }
   }, [fetchedItems]);
 
-    // console.log(items)
-    
-  if (isLoadingUserStats || isLoadingWithdraw ) {
+  const handlePaymentSuccess = async (withdrawId, workerEmail, withdrawCoin) => {
+    try {
+      const response = await axiosSecure.post("/withdraw/complete", {
+        withdrawId,
+        workerEmail,
+        withdrawCoin,
+      });
+      if (response.data.success) {
+        setItems((prevItems) => prevItems.filter((item) => item._id !== withdrawId));
+      } else {
+        console.error(response.data.message);
+      }
+    } catch (error) {
+      console.error("Error completing withdrawal", error);
+    }
+  };
+
+  if (isLoadingUserStats || isLoadingWithdraw) {
     return <LoadingSpinner></LoadingSpinner>;
   }
+
   return (
     <div className="w-full min-h-[calc(100vh-400px)] flex flex-col justify-center items-center text-gray-800 rounded-xl bg-gray-50">
       <Helmet>
@@ -57,9 +71,7 @@ const [items, setItems] = useState(null);
       </Helmet>
 
       <div className="mx-auto text-center space-y-4">
-        <h2 className="pt-6 text-2xl lg:text-4xl font-bold text-black">
-          States
-        </h2>
+        <h2 className="pt-6 text-2xl lg:text-4xl font-bold text-black">States</h2>
       </div>
       <div className="grid gap-6 my-16 md:grid-cols-3">
         <div className="flex flex-col p-8 space-y-4 rounded-md bg-[#416EF0] text-white">
@@ -76,9 +88,7 @@ const [items, setItems] = useState(null);
         </div>
       </div>
       <div className="mx-auto text-center space-y-4">
-        <h2 className="pt-6 text-2xl lg:text-4xl font-bold text-black">
-          Withdraw Request
-        </h2>
+        <h2 className="pt-6 text-2xl lg:text-4xl font-bold text-black">Withdraw Request</h2>
         <div className="overflow-x-auto whitespace-nowrap">
           <table className="table">
             <thead>
@@ -90,32 +100,28 @@ const [items, setItems] = useState(null);
                 <th>Payment Number</th>
                 <th>Payment System</th>
                 <th>Withdraw Time</th>
-                
               </tr>
             </thead>
             <tbody>
-               {items?.map((item, index) => (
-                                <tr key={item._id}> 
-               <td>{index + 1}</td>
-                                    <td>{item?.worker_name}</td>
-                                    <td>{item?.withdraw_coin
-}</td>
-                                    <td>{item?.withdraw_amount} $</td>
-                                    <td>{item?.payment_number} </td>
-                                    <td>{item?.payment_system} </td>
-                                    <td>{item?.
-createdAt
-} </td>
-              
-                                    <td>
-                                        <button
-                                            className="px-4 py-3 bg-blue-200 text-blue-800 border border-rose-300 focus:outline-rose-500 rounded-md"
-                                        >
-                                        Payment Success
-                                        </button>
-                                    </td> 
-           </tr>
-                            ))} 
+              {items?.map((item, index) => (
+                <tr key={item._id}>
+                  <td>{index + 1}</td>
+                  <td>{item?.worker_name}</td>
+                  <td>{item?.withdraw_coin}</td>
+                  <td>{item?.withdraw_amount} $</td>
+                  <td>{item?.payment_number}</td>
+                  <td>{item?.payment_system}</td>
+                  <td>{item?.createdAt}</td>
+                  <td>
+                    <button
+                      className="px-4 py-3 bg-blue-200 text-blue-800 border border-rose-300 focus:outline-rose-500 rounded-md"
+                      onClick={() => handlePaymentSuccess(item._id, item.worker_email, item.withdraw_coin)}
+                    >
+                      Payment Success
+                    </button>
+                  </td>
+                </tr>
+              ))}
             </tbody>
           </table>
         </div>

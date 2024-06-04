@@ -24,6 +24,7 @@ import TaskList from "../components/Dashboard/Worker/TaskList";
 import MySubmission from "../components/Dashboard/Worker/MySubmission";
 import ViewDetails from "../components/Dashboard/components/ViewDetails";
 import Withdraw from "../components/Dashboard/Worker/Withdraw";
+import Payment from "../components/Payment/Payment";
 
 
 export const router = createBrowserRouter([
@@ -145,6 +146,14 @@ export const router = createBrowserRouter([
         </PrivateRoute>
 
       },
+      {
+        path: 'payment',
+    element: <PrivateRoute>
+          <TaskCreatorRoute>
+        <Payment></Payment>
+          </TaskCreatorRoute>
+        </PrivateRoute>
+    },
       {
         path: 'payment-history',
     element: <PrivateRoute>
