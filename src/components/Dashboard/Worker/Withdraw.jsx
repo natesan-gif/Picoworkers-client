@@ -49,7 +49,7 @@ const Withdraw = () => {
     const withdraw_coin = form.coin.value;
     const withdraw_amount = form.coin.value/ 20;
     const payment_system = form.payment.value;
-
+    const payment_number = form.account.value;
     // Check if user has enough coins
     if (item?.coins < withdraw_coin) {
       // Display toast message if user doesn't have enough coins
@@ -63,6 +63,7 @@ const Withdraw = () => {
       withdraw_coin,
       withdraw_amount,
       payment_system,
+      payment_number,
     };
     withdrawMutation.mutate(withdrawalData);
   };
@@ -128,7 +129,7 @@ const Withdraw = () => {
           </div>
           <div className="py-6">
             <button
-              className="w-full px-4 py-3 bg-blue-200 text-blue-800 border border-rose-300 focus:outline-rose-500 rounded-md "
+              className="w-full px-4 py-3 bg-blue-200 text-blue-800 border border-rose-300 focus:outline-rose-500 rounded-md"
               type="submit"
             >
               Withdraw

@@ -19,7 +19,7 @@ const ManageUsers = () => {
     },
   })
 
-  console.log(users)
+
     if (isLoading) return <LoadingSpinner />
       const workerUsers = users.filter(user => user.role === 'worker');
     return (
