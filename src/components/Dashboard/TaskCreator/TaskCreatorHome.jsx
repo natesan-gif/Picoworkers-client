@@ -19,9 +19,8 @@ const customStyles = {
   },
 };
 // Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
-Modal.setAppElement('#root');
+Modal.setAppElement("#root");
 const TaskCreatorHome = () => {
-
   let subtitle;
   const [modalIsOpen, setIsOpen] = React.useState(false);
 
@@ -95,24 +94,28 @@ const TaskCreatorHome = () => {
       setWork(taskItem);
     }
   }, [taskItem]);
-    console.log(work)
-    const handleApprove = async (submissionId) => {
-        try {
-            await axiosSecure.patch(`/submission/${submissionId}`, { status: "approved" });
-            // Optionally, update the UI to reflect the change
-        } catch (error) {
-            console.error("Error approving submission:", error);
-        }
-    };
+  console.log(work);
+  const handleApprove = async (submissionId) => {
+    try {
+      await axiosSecure.patch(`/submission/${submissionId}`, {
+        status: "approved",
+      });
+      // Optionally, update the UI to reflect the change
+    } catch (error) {
+      console.error("Error approving submission:", error);
+    }
+  };
 
-    const handleReject = async (submissionId) => {
-        try {
-            await axiosSecure.patch(`/submission/${submissionId}`, { status: "rejected" });
-            // Optionally, update the UI to reflect the change
-        } catch (error) {
-            console.error("Error rejecting submission:", error);
-        }
-    };
+  const handleReject = async (submissionId) => {
+    try {
+      await axiosSecure.patch(`/submission/${submissionId}`, {
+        status: "rejected",
+      });
+      // Optionally, update the UI to reflect the change
+    } catch (error) {
+      console.error("Error rejecting submission:", error);
+    }
+  };
   if (isLoadingUser || isLoadingTasks || isLoadingWork)
     return <LoadingSpinner />;
 
@@ -150,8 +153,7 @@ const TaskCreatorHome = () => {
                 <th>Task Title</th>
                 <th>Payable amount</th>
                 <th>Submission Button</th>
-                <th>Approve</th>
-                <th>Reject</th>
+            
               </tr>
             </thead>
             <tbody>
@@ -161,31 +163,38 @@ const TaskCreatorHome = () => {
                   <td>{task.worker_email}</td>
                   <td>{task.task_title}</td>
                   <td>{task.payable_amount}</td>
-              
-               
-                  <td className=' m-2 inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm items-center mt-2' > <button
-                        onClick={openModal}
-                        
+                  <td className=" m-2 inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm items-center mt-2">
+                    {" "}
+                    <button onClick={openModal}>View details</button>{" "}
+                    <Modal
+                      isOpen={modalIsOpen}
+                      onAfterOpen={afterOpenModal}
+                      onRequestClose={closeModal}
+                      style={customStyles}
+                      contentLabel="Example Modal"
+                    >
+                      <button
+                        className="absolute top-0 right-0 bg-blue-100 p-2 text-sm font-medium rounded-full text-blue-900 z-10 hover:text-blue-700 hover:bg-blue-500 focus:outline-none"
+                        onClick={closeModal}
                       >
-                        View details
-                      </button>   <Modal
-                        isOpen={modalIsOpen}
-                        onAfterOpen={afterOpenModal}
-                        onRequestClose={closeModal}
-                        style={customStyles}
-                        contentLabel="Example Modal"
-                      >
-                        
-                        <button className="absolute top-0 right-0 bg-blue-100 p-2 text-sm font-medium rounded-full text-blue-900 Z-10hover:text-blue-700 hover:bg-blue-500 focus:outline-none" onClick={closeModal}><MdClose></MdClose> </button>
-                        <div className="p-4">Submission Detail: {task?.submission_detail}</div>
-                      </Modal></td>
-                  
-                    <td className=' m-2 inline-flex justify-center rounded-md border border-transparent bg-green-100 px-4 py-2 text-sm items-center mt-2'>
-        <button onClick={() => handleApprove(task._id)}>Approve</button>
-      </td>
-      <td className=' m-2 inline-flex justify-center rounded-md border border-transparent bg-red-100 px-4 py-2 text-sm items-center mt-2'>
-        <button onClick={() => handleReject(task._id)}>Reject</button>
-      </td>
+                        <MdClose></MdClose>{" "}
+                      </button>
+                      <div className="">
+                        Submission Detail: {task?.submission_detail}
+                      </div>
+                    </Modal>
+                  </td>
+
+                  <td className=" m-2 inline-flex justify-center rounded-md border border-transparent bg-green-100 px-4 py-2 text-sm items-center mt-2">
+                    <button onClick={() => handleApprove(task._id)}>
+                      Approve
+                    </button>
+                  </td>
+                  <td className=" m-2 inline-flex justify-center rounded-md border border-transparent bg-red-100 px-4 py-2 text-sm items-center mt-2">
+                    <button onClick={() => handleReject(task._id)}>
+                      Reject
+                    </button>
+                  </td>
                 </tr>
               ))}
             </tbody>

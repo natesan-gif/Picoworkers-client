@@ -111,7 +111,6 @@ const ManageTasks = () => {
                 <th>Coin Needed</th>
                 <th>Availability</th>
                 <th>View Task</th>
-
                 <th>Delete Task</th>
               </tr>
             </thead>
@@ -119,11 +118,11 @@ const ManageTasks = () => {
               {items?.map((task, index) => (
                 <tr key={task._id}>
                   <td>{index + 1}</td>
-                  <td>{task.title}</td>
-                  <td>{task.taskCreator.name}</td>
-                  <td>{task.quantity}</td>
-                  <td>{task.price}</td>
-                  <td></td>
+                  <td>{task?.title}</td>
+                  <td>{task?.taskCreator?.name}</td>
+                  <td>{task?.quantity}</td>
+                  <td>{task.amount*task.quantity}</td>
+                  <td>{task.quantity > 0 ? 'Available' : 'Not Available'}</td>
                   <td>
                    
                       <button

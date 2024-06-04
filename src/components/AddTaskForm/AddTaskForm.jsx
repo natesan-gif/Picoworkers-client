@@ -140,7 +140,7 @@ const AddTaskForm = ({
           {loading ? (
             <TbFidgetSpinner className='animate-spin m-auto' />
           ) : (
-            ' Save & Continue'
+            'Add Task'
           )}
         </button>
       </form>
