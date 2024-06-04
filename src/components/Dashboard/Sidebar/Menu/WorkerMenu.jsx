@@ -4,7 +4,7 @@ import useAxiosSecure from '../../../../Hooks/useAxiosSecure';
 import useRole from '../../../../Hooks/useRole.jsx';
 import MenuItem from '../MenuItem/MenuItem.jsx';
 import { BsFillHouseAddFill } from 'react-icons/bs';
-import { FaList, FaTasks } from 'react-icons/fa';
+import { FaCoins, FaList, FaTasks } from 'react-icons/fa';
 
 const WorkerMenu = () => {
     const axiosSecure = useAxiosSecure()
@@ -22,6 +22,11 @@ const WorkerMenu = () => {
         icon={FaList}
         label='My Submission'
         address='my-submission'
+      />
+      <MenuItem
+        icon={FaCoins}
+        label='Withdraw'
+        address='withdraw-coins'
       />
         </>
     );

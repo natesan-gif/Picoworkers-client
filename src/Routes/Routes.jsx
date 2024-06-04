@@ -23,6 +23,7 @@ import WorkerHome from "../components/Dashboard/Worker/WorkerHome";
 import TaskList from "../components/Dashboard/Worker/TaskList";
 import MySubmission from "../components/Dashboard/Worker/MySubmission";
 import ViewDetails from "../components/Dashboard/components/ViewDetails";
+import Withdraw from "../components/Dashboard/Worker/Withdraw";
 
 
 export const router = createBrowserRouter([
@@ -93,6 +94,10 @@ export const router = createBrowserRouter([
       {
         path: 'view-details/:id',
         element:<ViewDetails></ViewDetails>
+      },
+      {
+        path: 'withdraw-coins',
+      element:<Withdraw></Withdraw>
     },
     
     
