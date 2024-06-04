@@ -116,7 +116,7 @@ const ManageTasks = () => {
               </tr>
             </thead>
             <tbody>
-              {items.map((task, index) => (
+              {items?.map((task, index) => (
                 <tr key={task._id}>
                   <td>{index + 1}</td>
                   <td>{task.title}</td>

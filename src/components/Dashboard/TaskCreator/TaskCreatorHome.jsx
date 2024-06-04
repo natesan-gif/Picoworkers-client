@@ -4,10 +4,39 @@ import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
 import { FaEdit } from "react-icons/fa";
-import { MdDelete } from "react-icons/md";
+import { MdClose, MdDelete } from "react-icons/md";
 import LoadingSpinner from "../../Spinner/LoadingSpinner";
+import Modal from "react-modal";
 
+const customStyles = {
+  content: {
+    top: "50%",
+    left: "50%",
+    right: "auto",
+    bottom: "auto",
+    marginRight: "-50%",
+    transform: "translate(-50%, -50%)",
+  },
+};
+// Make sure to bind modal to your appElement (https://reactcommunity.org/react-modal/accessibility/)
+Modal.setAppElement('#root');
 const TaskCreatorHome = () => {
+
+  let subtitle;
+  const [modalIsOpen, setIsOpen] = React.useState(false);
+
+  function openModal() {
+    setIsOpen(true);
+  }
+
+  function afterOpenModal() {
+    // references are now sync'd and can be accessed.
+    subtitle.style.color = "#f00";
+  }
+
+  function closeModal() {
+    setIsOpen(false);
+  }
   const { user } = useAuth() || {};
   const axiosSecure = useAxiosSecure();
   const [tasks, setTasks] = useState([]);
@@ -134,8 +163,24 @@ const TaskCreatorHome = () => {
                   <td>{task.payable_amount}</td>
               
                
-                 <td className=' m-2 inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm items-center mt-2'>View details</td>
-                    <td className=' m-2 inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm items-center mt-2'>
+                  <td className=' m-2 inline-flex justify-center rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm items-center mt-2' > <button
+                        onClick={openModal}
+                        
+                      >
+                        View details
+                      </button>   <Modal
+                        isOpen={modalIsOpen}
+                        onAfterOpen={afterOpenModal}
+                        onRequestClose={closeModal}
+                        style={customStyles}
+                        contentLabel="Example Modal"
+                      >
+                        
+                        <button className="absolute top-0 right-0 bg-blue-100 p-2 text-sm font-medium rounded-full text-blue-900 Z-10hover:text-blue-700 hover:bg-blue-500 focus:outline-none" onClick={closeModal}><MdClose></MdClose> </button>
+                        <div className="p-4">Submission Detail: {task?.submission_detail}</div>
+                      </Modal></td>
+                  
+                    <td className=' m-2 inline-flex justify-center rounded-md border border-transparent bg-green-100 px-4 py-2 text-sm items-center mt-2'>
         <button onClick={() => handleApprove(task._id)}>Approve</button>
       </td>
       <td className=' m-2 inline-flex justify-center rounded-md border border-transparent bg-red-100 px-4 py-2 text-sm items-center mt-2'>

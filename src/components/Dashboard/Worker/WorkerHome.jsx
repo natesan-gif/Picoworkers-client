@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import useAxiosSecure from '../../../Hooks/useAxiosSecure';
 import useAuth from '../../../Hooks/useAuth';
+import LoadingSpinner from '../../Spinner/LoadingSpinner';
 
 const WorkerHome = () => {
   const [item, setItems] = useState(null);
@@ -20,7 +21,7 @@ const WorkerHome = () => {
   });
 
   // Fetch submission count
-  const { data: submissionCountData, isLoading: isLoadingSubmissionCount, isError: isErrorSubmissionCount } = useQuery({
+  const { data: submissionCountData, isLoading: isLoadingSubmissionCount } = useQuery({
     queryKey: ["submissionCount", user?.email],
     queryFn: async () => {
       const response = await axiosSecure.get(`/submissionCount/${user?.email}`);
@@ -30,7 +31,7 @@ const WorkerHome = () => {
   });
 
   // Fetch approved submissions
-  const { data: approvedSubmissions, isLoading: isLoadingApprovedSubmissions, isError: isErrorApprovedSubmissions } = useQuery({
+  const { data: approvedSubmissions, isLoading: isLoadingApprovedSubmissions} = useQuery({
     queryKey: ["approvedSubmissions", user?.email],
     queryFn: async () => {
       const response = await axiosSecure.get(`/approvedSubmissions/${user?.email}`);
@@ -46,7 +47,7 @@ const WorkerHome = () => {
   }, [fetchedItems]);
 
   const totalEarnings = approvedSubmissions?.reduce((sum, submission) => sum + submission.payable_amount, 0) || 0;
-
+if( isLoadingSubmissionCount ||isLoadingApprovedSubmissions) return <LoadingSpinner></LoadingSpinner>
   return (
     <div className="w-full min-h-[calc(100vh-400px)] flex flex-col justify-center items-center text-gray-800 rounded-xl bg-gray-50">
       <Helmet>
