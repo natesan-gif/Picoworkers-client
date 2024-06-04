@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import useAuth from "../../../Hooks/useAuth";
-import { useParams } from "react-router-dom";
+import {  useNavigate, useParams } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import LoadingSpinner from "../../Spinner/LoadingSpinner";
@@ -11,13 +11,14 @@ const ViewDetails = () => {
   const { user } = useAuth();
   const [currentDate, setCurrentDate] = useState("");
   const { id } = useParams();
-  // const foodsItem = useLoaderData();
+    const navigate = useNavigate();
+  
   const axiosSecure = useAxiosSecure();
-  const { data: taskItem, isLoading } = useQuery({
+  const { data: taskItem, isLoading, } = useQuery({
     queryKey: ["tasks", id],
     queryFn: async () => {
       const response = await axiosSecure.get(`/tasks/${id}`);
-      //  console.log(foodsItem)
+
       return response.data;
     },
   });
@@ -26,11 +27,11 @@ const ViewDetails = () => {
   useEffect(() => {
     setItem(taskItem);
   }, [taskItem]);
-  const { data: labour } = useQuery({
+  const { data: labour, refetch  } = useQuery({
     queryKey: ["users", id],
     queryFn: async () => {
       const response = await axiosSecure.get(`/users/${user.email}`);
-      //  console.log(foodsItem)
+  
       return response.data;
     },
   });
@@ -41,7 +42,7 @@ const ViewDetails = () => {
   }, [labour]);
   useEffect(() => {
     const now = new Date();
-    const formattedDate = now.toLocaleDateString(); // You can customize the format as needed
+    const formattedDate = now.toLocaleDateString();
     setCurrentDate(formattedDate);
   }, []);
     
@@ -68,6 +69,8 @@ const ViewDetails = () => {
       const response = await axiosSecure.post('/submission', submissionData);
       if (response.status === 200) {
         toast.success('data added successfully')
+        refetch()
+        navigate('/dashboard/my-submission')
         // console.log('Submission successful', response.data);
         // Handle success (e.g., show a success message or redirect)
       }
