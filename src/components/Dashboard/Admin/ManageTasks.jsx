@@ -121,8 +121,8 @@ const ManageTasks = () => {
                   <td>{task?.title}</td>
                   <td>{task?.taskCreator?.name}</td>
                   <td>{task?.quantity}</td>
-                  <td>{task.amount*task.quantity}</td>
-                  <td>{task.quantity > 0 ? 'Available' : 'Not Available'}</td>
+                  <td>{task?.amount*task?.quantity}</td>
+                  <td>{task?.quantity > 0 ? 'Available' : 'Not Available'}</td>
                   <td>
                    
                       <button
