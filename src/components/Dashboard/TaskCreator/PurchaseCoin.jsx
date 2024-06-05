@@ -26,11 +26,11 @@ const PurchaseCoin = () => {
         {data?.map((item) => (
           
             <Link item={item} key={item._id}
-              to="/dashboard/payment"
+              to={`/dashboard/payment/${item._id}`}
               className="flex flex-col p-8 space-y-4 rounded-md bg-[#416EF0] text-white"
 			>
 				<p className="text-2xl font-semibold">{item.coins}  coins</p>
-				<p className="text-2xl font-semibold ">{item.price} $</p>
+				<p className="text-2xl font-semibold ">{item.balance} $</p>
 				
             </Link>
         

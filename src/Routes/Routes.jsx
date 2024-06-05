@@ -147,7 +147,7 @@ export const router = createBrowserRouter([
 
       },
       {
-        path: 'payment',
+        path: 'payment/:id',
     element: <PrivateRoute>
           <TaskCreatorRoute>
         <Payment></Payment>
