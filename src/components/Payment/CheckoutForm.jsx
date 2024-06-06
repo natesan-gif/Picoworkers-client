@@ -116,6 +116,7 @@ useEffect(() => {
       try {
         // Save payment info in the payment collection (db)
         const { data } = await axiosSecure.post("/payments", paymentInfo);
+        
         console.log(data);
 
         toast.success("Coin buy Successfully");
