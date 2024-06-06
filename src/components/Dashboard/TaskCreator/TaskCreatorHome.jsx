@@ -7,6 +7,7 @@ import { FaEdit } from "react-icons/fa";
 import { MdClose, MdDelete } from "react-icons/md";
 import LoadingSpinner from "../../Spinner/LoadingSpinner";
 import Modal from "react-modal";
+import toast from "react-hot-toast";
 
 const customStyles = {
   content: {
@@ -94,13 +95,14 @@ const TaskCreatorHome = () => {
       setWork(taskItem);
     }
   }, [taskItem]);
-  console.log(work);
+  // console.log(work);
   const handleApprove = async (submissionId) => {
     try {
       await axiosSecure.patch(`/submission/${submissionId}`, {
         status: "approved",
       });
-      // Optionally, update the UI to reflect the change
+      toast.success('task approved')
+ 
     } catch (error) {
       console.error("Error approving submission:", error);
     }
@@ -111,12 +113,30 @@ const TaskCreatorHome = () => {
       await axiosSecure.patch(`/submission/${submissionId}`, {
         status: "rejected",
       });
-      // Optionally, update the UI to reflect the change
+        toast.success('task rejected')
+      
     } catch (error) {
       console.error("Error rejecting submission:", error);
     }
   };
-  if (isLoadingUser || isLoadingTasks || isLoadingWork)
+    // Fetch approved submissions
+  const { data: approvedSubmissions, isLoading: isLoadingApprovalSubmissions} = useQuery({
+    queryKey: ["approvalSubmissions", user?.email],
+    queryFn: async () => {
+      const response = await axiosSecure.get(`/approvalSubmissions/${user?.email}`);
+      return response.data;
+    },
+    enabled: !!user?.email,
+  });
+
+  useEffect(() => {
+    if (fetchedItems) {
+      setItems(fetchedItems);
+    }
+  }, [fetchedItems]);
+
+  const totalPayment = approvedSubmissions?.reduce((sum, submission) => sum + submission.payable_amount, 0) || 0;
+  if (isLoadingUser || isLoadingTasks || isLoadingWork|| isLoadingApprovalSubmissions)
     return <LoadingSpinner />;
 
   return (
@@ -137,7 +157,7 @@ const TaskCreatorHome = () => {
         </div>
         <div className="flex flex-col p-8 space-y-4 rounded-md bg-[#416EF0] text-white">
           <p className="text-xl font-semibold">Total Payment</p>
-          <p className="text-2xl font-semibold">9 dollars</p>
+          <p className="text-2xl font-semibold">{ totalPayment}</p>
         </div>
       </div>
       <div className="mx-auto text-center space-y-4">
