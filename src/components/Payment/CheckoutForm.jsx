@@ -29,7 +29,7 @@ const CheckoutForm = () => {
     },
   });
 
-  console.log(data)
+  // console.log(data)
   
 useEffect(() => {
     if (data?.balance) {
@@ -95,7 +95,7 @@ useEffect(() => {
       });
 
     if (confirmError) {
-      console.log(confirmError);
+      // console.log(confirmError);
       setCardError(confirmError.message);
       setProcessing(false);
       return;
@@ -117,7 +117,7 @@ useEffect(() => {
         // Save payment info in the payment collection (db)
         const { data } = await axiosSecure.post("/payments", paymentInfo);
         
-        console.log(data);
+        // console.log(data);
 
         toast.success("Coin buy Successfully");
         // navigate('/dashboard/payment-history');

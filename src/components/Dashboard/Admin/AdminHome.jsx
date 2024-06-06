@@ -10,6 +10,7 @@ const AdminHome = () => {
   const axiosSecure = useAxiosSecure();
   const [userStats, setUserStats] = useState({ totalUsers: 0, totalCoins: 0 });
   const [items, setItems] = useState(null);
+const [totalAmount, setTotalAmount] = useState(0);// State to store total payments
 
   const {
     data: fetchedUserStats,
@@ -43,6 +44,23 @@ const AdminHome = () => {
     }
   }, [fetchedItems]);
 
+  // Fetch total payments from backend
+const {
+  data: fetchedPaymentStats,
+  isLoading: isLoadingPaymentStats,
+} = useQuery({
+  queryKey: ["paymentStats"],
+  queryFn: async () => {
+    const response = await axiosSecure.get(`/paymentsStats`);
+    return response.data;
+  },
+});
+
+useEffect(() => {
+  if (fetchedPaymentStats) {
+    setTotalAmount(fetchedPaymentStats.totalAmount);
+  }
+}, [fetchedPaymentStats]);
   const handlePaymentSuccess = async (withdrawId, workerEmail, withdrawCoin) => {
     try {
       const response = await axiosSecure.post("/withdraw/complete", {
@@ -60,8 +78,8 @@ const AdminHome = () => {
     }
   };
 
-  if (isLoadingUserStats || isLoadingWithdraw) {
-    return <LoadingSpinner></LoadingSpinner>;
+  if (isLoadingUserStats || isLoadingWithdraw || isLoadingPaymentStats) {
+    return <LoadingSpinner />;
   }
 
   return (
@@ -84,7 +102,7 @@ const AdminHome = () => {
         </div>
         <div className="flex flex-col p-8 space-y-4 rounded-md bg-[#416EF0] text-white">
           <p className="text-xl font-semibold">Total Payments</p>
-          <p className="text-2xl font-semibold">9 dollars</p>
+          <p className="text-2xl font-semibold">{totalAmount}$</p>
         </div>
       </div>
       <div className="mx-auto text-center space-y-4">
