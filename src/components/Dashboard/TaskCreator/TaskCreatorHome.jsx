@@ -157,7 +157,7 @@ const TaskCreatorHome = () => {
         </div>
         <div className="flex flex-col p-8 space-y-4 rounded-md bg-[#416EF0] text-white">
           <p className="text-xl font-semibold">Total Payment</p>
-          <p className="text-2xl font-semibold">{ totalPayment}</p>
+          <p className="text-2xl font-semibold">{ totalPayment} $ </p>
         </div>
       </div>
       <div className="mx-auto text-center space-y-4">
