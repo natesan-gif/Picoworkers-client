@@ -8,6 +8,8 @@ import {
 import { Link, NavLink, Navigate} from "react-router-dom";
 import { Tooltip } from "react-tooltip";
 import useAuth from "../../Hooks/useAuth.jsx";
+import useAxiosPublic from "../../Hooks/useAxiosPublic.jsx";
+import { useQuery } from "@tanstack/react-query";
 const Nav = () => {
   const storedTheme = localStorage.getItem("theme");
   const [theme, setTheme] = useState(storedTheme || "light");
@@ -30,6 +32,26 @@ function redirectToYoutube() {
   const { logOut, user } = useAuth();
   // console.log(user);
 
+  const axiosPublic = useAxiosPublic();
+  const [item, setItems]=useState(null)
+const { data:fetchedItems  } = useQuery(
+  {
+    queryKey: ["user", user?.email], 
+    queryFn: async () => {
+      const response = await axiosPublic.get(`/users/${user?.email}`);
+      // console.log(response.data)
+      return response.data;
+    },
+   
+  },
+  );
+  
+  useEffect(() => {
+    if (fetchedItems) {
+      setItems(fetchedItems);
+    }
+  }, [fetchedItems]);
+  //   console.log(user);
   const [openNav, setOpenNav] = React.useState(false);
  const handleSignOut = () => {
    logOut()
@@ -134,6 +156,7 @@ function redirectToYoutube() {
                   </label>
                 </a>
                 <Tooltip id="my-tooltip" />
+               <div>Available Coins: {item?.coins || ""}</div>
                 {/* <ul
                   tabIndex={0}
                   className="menu menu-sm dropdown-content mt-1 z-[1] pr-10 mr-4 rounded-box w-52"
