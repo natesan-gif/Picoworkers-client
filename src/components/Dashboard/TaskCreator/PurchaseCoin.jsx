@@ -22,7 +22,7 @@ const PurchaseCoin = () => {
           Purchase Coin
         </h2>
       </div>
-      <div className="grid gap-6 my-16 md:grid-cols-2 lg:grid-cols-4">
+      <div className="grid gap-6 my-16 md:grid-cols-2 lg:grid-cols-4 mx-8">
         {data?.map((item) => (
           
             <Link item={item} key={item._id}

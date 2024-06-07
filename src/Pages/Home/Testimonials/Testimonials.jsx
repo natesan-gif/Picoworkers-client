@@ -25,7 +25,7 @@ const Testimonials = () => {
           Testimonials
         </h2>
         <p>
-          Join our microtasking community and start earning from a wide range of simple tasks. Our secure payment system, detailed task descriptions, and real-time support make it easy to earn extra income. Join our community today and enjoy the flexibility and rewards of microtasking!
+          Testimonials help us understand what our users love and how we can continue to improve our platform. Your feedback not only inspires us but also helps new users get a sense of what to expect when they join our community
         </p>
       </div>
           <Swiper navigation={true} modules={[Navigation]} className="mySwiper">

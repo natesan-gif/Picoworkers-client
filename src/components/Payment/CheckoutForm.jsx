@@ -120,7 +120,7 @@ useEffect(() => {
         // console.log(data);
 
         toast.success("Coin buy Successfully");
-        // navigate('/dashboard/payment-history');
+        navigate('/dashboard/payment-history');
         setTransactionId(paymentIntent.id);
       } catch (err) {
         console.log(err);
