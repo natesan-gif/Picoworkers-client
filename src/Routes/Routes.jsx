@@ -1,4 +1,4 @@
-import { createBrowserRouter } from "react-router-dom";
+import { Navigate, createBrowserRouter } from "react-router-dom";
 import Main from "../Layout/Main";
 import Home from "../Pages/Home/Home";
 import ErrorPage from "../Pages/ErrorPage/ErrorPage";
@@ -23,6 +23,8 @@ import MySubmission from "../components/Dashboard/Worker/MySubmission";
 import ViewDetails from "../components/Dashboard/components/ViewDetails";
 import Withdraw from "../components/Dashboard/Worker/Withdraw";
 import Payment from "../components/Payment/Payment";
+import ForbiddenPage from "../Pages/ForbiddenPage/ForbiddenPage";
+import WorkerRoute from "./WorkerRoute";
 
 export const router = createBrowserRouter([
   {
@@ -82,25 +84,46 @@ export const router = createBrowserRouter([
 
       {
         path: "worker-home",
-        element: <WorkerHome></WorkerHome>,
+        element: <WorkerRoute>
+          <PrivateRoute>
+            <WorkerHome></WorkerHome>,
+          </PrivateRoute>
+        </WorkerRoute>
       },
 
       {
         path: "task-list",
-        element: <TaskList></TaskList>,
+        element: <WorkerRoute>
+          <PrivateRoute>
+             <TaskList></TaskList>,
+          </PrivateRoute>
+        </WorkerRoute>
       },
       {
         path: "my-submission",
-        element: <MySubmission></MySubmission>,
+          element: <WorkerRoute>
+          <PrivateRoute>
+           <MySubmission></MySubmission>
+          </PrivateRoute>
+        </WorkerRoute>
       },
+    
 
       {
         path: "view-details/:id",
-        element: <ViewDetails></ViewDetails>,
+        element:  <WorkerRoute>
+          <PrivateRoute>
+         <ViewDetails></ViewDetails>
+          </PrivateRoute>
+        </WorkerRoute> ,
       },
       {
         path: "withdraw-coins",
-        element: <Withdraw></Withdraw>,
+        element:<WorkerRoute>
+          <PrivateRoute>
+       <Withdraw></Withdraw>
+          </PrivateRoute>
+        </WorkerRoute> ,
       },
 
       //taskCreator Menu
@@ -175,6 +198,17 @@ export const router = createBrowserRouter([
             </TaskCreatorRoute>
           </PrivateRoute>
         ),
+      },
+       
+      {
+        path: "forbidden",
+        element: <ForbiddenPage></ForbiddenPage>
+      },
+
+      
+      {
+        path: "*",
+        element: <Navigate to="/dashboard/forbidden" replace />,
       },
     ],
   },

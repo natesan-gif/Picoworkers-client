@@ -1,5 +1,5 @@
 import React from 'react';
-import { Outlet, useLocation } from 'react-router-dom';
+import { Outlet, useLocation, ScrollRestoration } from 'react-router-dom';
 
 import Nav from '../components/Navbar/Nav';
 import Footer from '../components/Footer/Footer';
@@ -10,7 +10,8 @@ const Main = () => {
     const noHeaderFooter= location.pathname.includes('login') || location.pathname.includes('register')
     return (
         <div>
-             <div className='max-w-[1170px] mt-8 mx-auto p-4'>
+            <div className='max-w-[1170px] mt-8 mx-auto p-4'>
+                <ScrollRestoration/>
             {
                 noHeaderFooter ||   <Nav></Nav> 
           } 

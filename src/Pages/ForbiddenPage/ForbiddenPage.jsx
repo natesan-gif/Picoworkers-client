@@ -3,17 +3,18 @@ import { Link } from "react-router-dom";
 import error from '../../assets/404.json'
 import Lottie from "lottie-react";
 
-const ErrorPage = () => {
-	return (
-	
+
+const ForbiddenPage = () => {
+    return (
+       
 		<section className="flex items-center h-full p-16 dark:bg-gray-50 text-black">
 				<Helmet>
-              <title>PicoWorkers | Error Page</title>  
+              <title>PicoWorkers | Forbidden Page</title>  
             </Helmet>
 	<div className="container flex flex-col items-center justify-center px-5 mx-auto my-8">
 				<div className="max-w-md text-center">
 				<Lottie animationData={error} > </Lottie>	
-			<p className="text-2xl font-semibold md:text-3xl">Sorry, we couldn't find this page.</p>
+			<p className="text-2xl font-semibold md:text-3xl">Sorry, forbidden page. </p>
 			<p className="mt-4 mb-8">But dont worry, you can find plenty of other things on our homepage.</p>
 			<Link to='/' className="bg-[#416EF0] text-white border border-solid p-2 px-4">Back to homepage</Link>
 		</div>
@@ -22,4 +23,4 @@ const ErrorPage = () => {
     );
 };
 
-export default ErrorPage;
+export default ForbiddenPage;

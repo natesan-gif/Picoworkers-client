@@ -8,7 +8,7 @@ const TaskCreatorRoute = ({ children }) => {
 
   if (isLoading) return <LoadingSpinner />
   if (role === 'taskCreator') return children
-  return <Navigate to='/dashboard' />
+  return <Navigate to='/dashboard/forbidden' />
 };
 
 export default TaskCreatorRoute;

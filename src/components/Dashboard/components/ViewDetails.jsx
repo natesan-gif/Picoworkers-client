@@ -80,7 +80,7 @@ const ViewDetails = () => {
         timestamp: new Date(),
       });
         // Decrease quantity by 1
-        await axiosSecure.patch(`/tasks/${item._id}/decreaseQuantity`);
+        await axiosSecure.patch(`/tasks/${item?._id}/decreaseQuantity`);
         toast.success("Submission successful and quantity updated");
         queryClient.invalidateQueries(["tasks", id]);
         queryClient.invalidateQueries(["users", user.email]);
