@@ -1,8 +1,25 @@
-# React + Vite
+# PicoWorkers
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+-[Micro tasking and Earning Platform](https://assignment-12-27979.web.app)
 
-Currently, two official plugins are available:
+The Micro Tasking and Earning Platform is designed to provide users with opportunities to
+complete small tasks and earn rewards. The platform accommodates 3 distinct roles : Worker,
+Task-Creator, and Admin. Each role is tailored with specific functionalities to ensure seamless
+task management, task creation, and platform administration.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## Live Link
+
+https://assignment-12-27979.web.app
+
+### Features and Characteristics
+
+- MongoDB: Flexible and scalable data storage solution.
+- Express.js: Efficient server-side development with Express.js.
+- Node.js: High-performance server applications with Node.js.
+- React Router: Client-side routing for seamless navigation.
+- Context API: Global state management across components.
+- Firebase Authentication: Secure user authentication and authorization.
+- Private Routes: Protection of authenticated routes.
+- AxiosSecure: Enhanced security for HTTP requests.
+- TanStack Query: State management solution for React applications.
+- Tanstack Mutation: Efficient data manipulation with Tanstack Mutation.
