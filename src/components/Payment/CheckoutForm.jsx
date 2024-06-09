@@ -121,6 +121,7 @@ useEffect(() => {
 
         toast.success("Coin buy Successfully");
         navigate('/dashboard/payment-history');
+         window.location.reload();
         setTransactionId(paymentIntent.id);
       } catch (err) {
         console.log(err);

@@ -13,13 +13,14 @@ import { TbFidgetSpinner } from "react-icons/tb";
 import SocialLogin from "../Login/SocialLogin";
 import Spinner from "../../components/Spinner/Spinner";
 import Swal from 'sweetalert2';
+import useAxiosSecure from "../../Hooks/useAxiosSecure.jsx";
 // import axios from "axios";
   const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
   const image_hosting_api =`https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 const Register = () => {
   const { createUser, updateUserProfile, user, loading, setUser, reset } = useAuth();
   const navigate = useNavigate();
-  const axiosPublic=useAxiosPublic()
+  const axiosPublic = useAxiosPublic()
   const from = "/";
 
   const [showPassword, setShowPassword] = useState(false);
@@ -64,9 +65,13 @@ const Register = () => {
         };
 
         const response = await axiosPublic.put("/users", userInfo);
-console.log(response)
+// console.log(response)
         if (response.data.upsertedId) {
-
+  await axiosPublic.post("/notifications", {
+            email: result?.user?.email,
+            message: "Welcome to our platform!",
+            timestamp: Date.now(),
+          });
           Swal.fire({
             position: "top-end",
             icon: "success",
@@ -74,7 +79,9 @@ console.log(response)
             showConfirmButton: false,
             timer: 1500,
           });
+          window.location.reload()
           navigate(from, { replace: true });
+         
         }
       } catch (err) {
         console.log(err);
@@ -85,7 +92,7 @@ console.log(response)
   return (
     <div>
       <Helmet>
-        <title>| Register</title>
+        <title> Picoworkers | Register</title>
       </Helmet>
       <div className=" flex w-full max-w-sm  mx-auto mt-12 overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800 lg:max-w-4xl ">
         <div className="w-full max-w-md p-4 rounded-md shadow sm:p-8 text-black bg-[#416EF0] ">

@@ -49,7 +49,7 @@ const WorkerHome = () => {
   const totalEarnings = approvedSubmissions?.reduce((sum, submission) => sum + submission.payable_amount, 0) || 0;
 if( isLoadingSubmissionCount ||isLoadingApprovedSubmissions) return <LoadingSpinner></LoadingSpinner>
   return (
-    <div className="w-full min-h-[calc(100vh-400px)] flex flex-col justify-center items-center text-gray-800 rounded-xl bg-gray-50">
+    <div className="w-full min-h-[calc(100vh-400px)] flex flex-col justify-center items-center text-gray-800 rounded-xl ">
       <Helmet>
         <title>Worker Home | Dashboard</title>
       </Helmet>

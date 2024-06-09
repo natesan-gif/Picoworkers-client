@@ -53,7 +53,7 @@ const Withdraw = () => {
     // Check if user has enough coins
     if (item?.coins < withdraw_coin) {
       // Display toast message if user doesn't have enough coins
-      toast.error("Insufficient coins! Please buy more coins");
+      toast.error("Insufficient coins! Please earn more coins");
       return; // Do not proceed with withdrawal
     }
 
@@ -75,9 +75,9 @@ const Withdraw = () => {
 
   if (isLoadingUser) return <LoadingSpinner></LoadingSpinner>;
   return (
-    <div className="w-full min-h-[calc(100vh-400px)] flex flex-col justify-center items-center text-gray-800 rounded-xl bg-gray-50">
+    <div className="w-full min-h-[calc(100vh-400px)] flex flex-col justify-center items-center text-gray-800 rounded-xl">
       <Helmet>
-        <title>Withdraw| Dashboard</title>
+        <title>Withdraw | Dashboard</title>
       </Helmet>
 
       <div className="mx-auto text-center space-y-4">

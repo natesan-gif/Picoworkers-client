@@ -1,142 +1,147 @@
 import React, { useEffect, useState } from "react";
-import {
-  Navbar,
-  MobileNav,
-  Typography,
-  IconButton,
-} from "@material-tailwind/react";
-import { Link, NavLink, Navigate} from "react-router-dom";
+import { Navbar, MobileNav, Typography, IconButton } from "@material-tailwind/react";
+import { Link, NavLink } from "react-router-dom";
 import { Tooltip } from "react-tooltip";
+import { Navigate } from "react-router-dom";
 import useAuth from "../../Hooks/useAuth.jsx";
 import useAxiosPublic from "../../Hooks/useAxiosPublic.jsx";
 import { useQuery } from "@tanstack/react-query";
+
 const Nav = () => {
   const storedTheme = localStorage.getItem("theme");
   const [theme, setTheme] = useState(storedTheme || "light");
 
   useEffect(() => {
-    // Update local storage whenever theme changes
     localStorage.setItem("theme", theme);
-    // Apply the theme to the HTML element
     document.querySelector("html").setAttribute("data-theme", theme);
   }, [theme]);
-function redirectToYoutube() {
-  const url = "https://www.youtube.com/watch?v=IAI6hspV6Bg"
-  location.replace(url)
-}
- const handleToggle = () => {
-    // Toggle between "light" and "dark" themes
+
+  function redirectToYoutube() {
+    const url = "https://www.youtube.com/watch?v=IAI6hspV6Bg";
+    window.location.replace(url);
+  }
+
+  const handleToggle = () => {
     setTheme((prevTheme) => (prevTheme === "light" ? "dark" : "light"));
   };
-  // console.log(theme);
+
   const { logOut, user } = useAuth();
-  // console.log(user);
 
   const axiosPublic = useAxiosPublic();
-  const [item, setItems]=useState(null)
-const { data:fetchedItems  } = useQuery(
-  {
-    queryKey: ["user", user?.email], 
+  const [item, setItems] = useState(null);
+
+  const { data: fetchedItems } = useQuery({
+    queryKey: ["user", user?.email],
     queryFn: async () => {
       const response = await axiosPublic.get(`/users/${user?.email}`);
-      // console.log(response.data)
       return response.data;
     },
-   
-  },
-  );
-  
+  });
+
   useEffect(() => {
     if (fetchedItems) {
       setItems(fetchedItems);
     }
   }, [fetchedItems]);
-  //   console.log(user);
+
   const [openNav, setOpenNav] = React.useState(false);
- const handleSignOut = () => {
-   logOut()
-       
-    .catch((error) => {
-      console.log(error);
-      Navigate('/')
-    });
-};
+
+  const handleSignOut = () => {
+    logOut()
+      .catch((error) => {
+        console.log(error);
+        Navigate("/");
+      });
+  };
+
   React.useEffect(() => {
-    window.addEventListener(
-      "resize",
-      () => window.innerWidth >= 960 && setOpenNav(false)
-    );
+    window.addEventListener("resize", () => window.innerWidth >= 960 && setOpenNav(false));
   }, []);
 
   const navList = (
-    <ul className="mt-2 mb-4 pl-4 lg:pr-12 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">
-      {/* <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-normal"
-      >
-        <NavLink
-          to="/"
-         className={({ isActive, isPending }) =>
-            isPending
-              ? "pending"
-              : isActive
-              ? "text-[#0044BC]  border-b-4 font-bold border-[#0044BC]"
-              : "hover:text-[#0044BC] font-bold"
-          }
+    <ul className="mt-2 mb-4 pl-4 lg:pr-12 flex flex-col gap-2 lg:mb-0 lg:mt-0 lg:flex-row lg:items-center lg:gap-6">   
+    {user && item?.role === "admin" && (
+        <Typography
+          as="li"
+          variant="small"
+          color="blue-gray"
+          className="p-1 font-bold"
         >
-          Home
-        </NavLink>
-      </Typography> */}
-      {
-        user ? <Typography
-        as="li"
-        variant="small"
-        color="blue-gray"
-        className="p-1 font-bold"
-      >
-        <NavLink
-          to="/dashboard"
-         className={({ isActive, isPending }) =>
-            isPending
-              ? "pending"
-              : isActive
-              ? "text-[#0044BC] border-b-4 font-bold border-[#0044BC]"
-              : "hover:text-[#0044BC] font-bold"
-          }
+          <NavLink
+            to="/dashboard/admin-home"
+            className={({ isActive, isPending }) =>
+              isPending
+                ? "pending"
+                : isActive
+                ? "text-[#0044BC] border-b-4 font-bold border-[#0044BC]"
+                : "hover:text-[#0044BC] font-bold"
+            }
+          >
+            Dashboard
+          </NavLink>
+        </Typography>
+      )}
+      
+      {user &&  item?.role === "taskCreator" && (
+        <Typography
+          as="li"
+          variant="small"
+          color="blue-gray"
+          className="p-1 font-bold"
         >
+          <NavLink
+            to="/dashboard/task-creator-home"
+            className={({ isActive, isPending }) =>
+              isPending
+                ? "pending"
+                : isActive
+                ? "text-[#0044BC] border-b-4 font-bold border-[#0044BC]"
+                : "hover:text-[#0044BC] font-bold"
+            }
+          >
          Dashboard
-        </NavLink>
-        </Typography> :
-          
-        
-    <button onClick={redirectToYoutube}  className="btn bg-[#0044BC] hover:bg-[#6BA6FF]  text-white rounded ">
-                   Watch
-          </button>
+          </NavLink>
+        </Typography>
+      )}
 
-    }
-   
+      {user &&  item?.role === "worker" && (
+        <Typography
+          as="li"
+          variant="small"
+          color="blue-gray"
+          className="p-1 font-bold"
+        >
+          <NavLink
+            to="/dashboard/worker-home"
+            className={({ isActive, isPending }) =>
+              isPending
+                ? "pending"
+                : isActive
+                ? "text-[#0044BC] border-b-4 font-bold border-[#0044BC]"
+                : "hover:text-[#0044BC] font-bold"
+            }
+          >
+            Dashboard
+          </NavLink>
+        </Typography>
+      )}
     </ul>
   );
+
 
   return (
     <div className="-m-6 max-h-[768px] w-[calc(100%+48px)] px-4">
       <Navbar className="sticky top-0 z-2 h-max max-w-full rounded-none px-4 py-2 lg:px-8 lg:py-4">
         <div className="flex items-center justify-between text-blue-gray-900">
           <div className="flex items-center justify-center">
-            {/* <div className="w-16 h-16 md:w-12 md:h-12 rounded-full dark:bg-violet-600 hidden md:block">
-              <img src="" alt="" />
-            </div> */}
             <Link to='/'>
-                 <Typography
-              as="a"
-              href="#"
-              className="mr-1 md:mr-2 cursor-pointer py-1.5 font-bold pl-2 md:pl-6 text-xl text-[#416EF0] "
-            >
-          PicoWorker
-            </Typography>
-         
+              <Typography
+                as="a"
+                href="#"
+                className="mr-1 md:mr-2 cursor-pointer py-1.5 font-bold pl-2 md:pl-6 text-xl text-[#416EF0]"
+              >
+                PicoWorker
+              </Typography>
             </Link>
           </div>
           <div className="flex items-center gap-4">
@@ -145,42 +150,27 @@ const { data:fetchedItems  } = useQuery(
               <div className="">
                 <a
                   data-tooltip-id="my-tooltip"
-                  data-tooltip-content={
-                    user?.displayName || "user name not found"
-                  }
+                  data-tooltip-content={user?.displayName || "user name not found"}
                 >
-                  <label tabIndex={0} className="btn btn-circle avatar ">
+                  <label tabIndex={0} className="btn btn-circle avatar">
                     <div className="w-12 rounded-full">
-                      <img src={user?.photoURL || ""} className="" />
+                      <img src={user?.photoURL || ""} className="" alt="user profile" />
                     </div>
                   </label>
                 </a>
                 <Tooltip id="my-tooltip" />
-               <div>Available Coins: {item?.coins || ""}</div>
-                {/* <ul
-                  tabIndex={0}
-                  className="menu menu-sm dropdown-content mt-1 z-[1] pr-10 mr-4 rounded-box w-52"
-                >
-                  <li>
-                    <button className="btn bg-primary text-white rounded">
-                      {user?.displayName || "user name not found"}
-                    </button>
-                  </li>
-                </ul> */}
+                <div>Available Coins: {item?.coins || ""}</div>
               </div>
             ) : (
-              <button></button>
+                <button onClick={redirectToYoutube} className="btn bg-[#0044BC] hover:bg-[#6BA6FF]  text-white rounded ">
+    Watch Demo
+  </button>
             )}
-
             {user ? (
-              <button
-                onClick={handleSignOut}
-                className="btn bg-[#0044BC] text-white rounded "
-              >
-                {" "}
+              <button onClick={handleSignOut} className="btn bg-[#0044BC] text-white rounded">
                 LogOut
               </button>
-            ) : (
+            )  : (
                 <div className="flex gap-2">
                    
                 <Link to="/login">

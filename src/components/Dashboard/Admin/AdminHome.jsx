@@ -4,6 +4,7 @@ import { useQuery } from "@tanstack/react-query";
 import useAuth from "../../../Hooks/useAuth";
 import { Helmet } from "react-helmet-async";
 import LoadingSpinner from "../../Spinner/LoadingSpinner";
+import toast from "react-hot-toast";
 
 const AdminHome = () => {
   const { user } = useAuth() || {};
@@ -69,6 +70,7 @@ useEffect(() => {
         withdrawCoin,
       });
       if (response.data.success) {
+        toast.success('withdraw request approved')
         setItems((prevItems) => prevItems.filter((item) => item._id !== withdrawId));
       } else {
         console.error(response.data.message);
@@ -83,9 +85,9 @@ useEffect(() => {
   }
 
   return (
-    <div className="w-full min-h-[calc(100vh-400px)] flex flex-col justify-center items-center text-gray-800 rounded-xl bg-gray-50">
+    <div className="w-full min-h-[calc(100vh-400px)] flex flex-col justify-center items-center text-gray-800 rounded-xl ">
       <Helmet>
-        <title>Admin Home| Dashboard</title>
+        <title>Admin Home | Dashboard</title>
       </Helmet>
 
       <div className="mx-auto text-center space-y-4">

@@ -28,9 +28,9 @@ const TaskList = () => {
     if (isLoading) return <LoadingSpinner></LoadingSpinner>;
     
     return (
-         <div className="w-full min-h-[calc(100vh-400px)] flex flex-col justify-center items-center text-gray-800 rounded-xl bg-gray-50">
+         <div className="w-full min-h-[calc(100vh-400px)] flex flex-col justify-center items-center text-gray-800 rounded-xl ">
              <Helmet>
-          <title>Task List| Dashboard</title>
+          <title>Task List | Dashboard</title>
         </Helmet>
            
             <div className="mx-auto text-center space-y-4">

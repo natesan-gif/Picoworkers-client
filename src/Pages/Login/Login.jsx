@@ -85,7 +85,7 @@ const Login = () => {
             <div className="flex items-center w-full">
                 <form onSubmit={handleSubmit(onSubmit)} className="card-body">
                     <Helmet>
-                        <title> | Login</title>
+                        <title>Picoworkers | Login</title>
                             </Helmet>
                              <SocialLogin></SocialLogin>
                     <div className="form-control">

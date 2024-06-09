@@ -3,7 +3,7 @@ import Payment from "../../Payment/Payment";
 import { useState } from "react";
 import useAxiosSecure from "../../../Hooks/useAxiosSecure";
 import { useQuery } from "@tanstack/react-query";
-
+import { Helmet } from "react-helmet-async";
 const PurchaseCoin = () => {
   const axiosSecure = useAxiosSecure();
 
@@ -16,7 +16,12 @@ const PurchaseCoin = () => {
     },
   });
   return (
-    <div className="w-full min-h-[calc(100vh-400px)] flex flex-col justify-center items-center text-gray-800 rounded-xl bg-gray-50">
+    <div className="w-full min-h-[calc(100vh-400px)] flex flex-col justify-center items-center text-gray-800 rounded-xl ">
+      <div>
+            <Helmet>
+        <title>Purchase coin | Dashboard</title>
+      </Helmet>
+ </div>
       <div className=" mx-auto text-center space-y-4">
         <h2 className="pt-6 text-2xl lg:text-4xl font-bold text-black ">
           Purchase Coin

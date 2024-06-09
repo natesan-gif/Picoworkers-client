@@ -27,7 +27,7 @@ const PaymentHistory = () => {
   }, [fetchedItems]);
 //   console.log(items);
   return (
-    <div className="w-full min-h-[calc(100vh-400px)] flex flex-col justify-center items-center text-gray-800 rounded-xl bg-gray-50">
+    <div className="w-full min-h-[calc(100vh-400px)] flex flex-col justify-center items-center text-gray-800 rounded-xl ">
       <Helmet>
         <title>Payment History | Dashboard</title>
       </Helmet>

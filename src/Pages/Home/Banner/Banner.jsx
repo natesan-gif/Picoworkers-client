@@ -19,6 +19,7 @@ import {
 } from "@material-tailwind/react";
 // import required modules
 import { Autoplay, Pagination, Navigation } from 'swiper/modules';
+import { Link } from 'react-router-dom';
 
 const Banner = () => {
   return (
@@ -42,13 +43,14 @@ const Banner = () => {
             <div className='space-y-2'>
                     <h1 className='text-3xl md:text-5xl text-white'>Transform Your Free Time into Money!</h1>
             <p className='text-white'>Unlock your earning potential with our microtasking platform. It’s easy, flexible, and rewarding!</p>
-           <Button
+           <Link to='#'>
+                <Button 
                 variant="text"
                 size="sm"
-                className="inline-block px-8 py-3 bg-[#0044BC] hover:bg-[#6BA6FF]  text-white rounded"
+                className="inline-block px-8 py-3 bg-[#0044BC] hover:bg-[#6BA6FF] text-white rounded"
               >
                 <span>Contact Us</span>
-              </Button>
+              </Button></Link>
       </div>
           </div>
         </SwiperSlide>
@@ -57,13 +59,14 @@ const Banner = () => {
             <div className='space-y-2'>
                     <h1 className='text-3xl md:text-5xl text-white'>Maximize Your Earnings with Microtasks</h1>
             <p className='text-white'>   Don’t let your free time go to waste.Start microtasking today and watch your income grow.</p>
-           <Button
+            <Link to='#'>
+                <Button 
                 variant="text"
                 size="sm"
-                className="inline-block px-8 py-3 bg-[#0044BC] hover:bg-[#6BA6FF]  text-white rounded"
+                className="inline-block px-8 py-3 bg-[#0044BC] hover:bg-[#6BA6FF] text-white rounded"
               >
                 <span>Contact Us</span>
-              </Button>
+              </Button></Link>
       </div>
           </div>
         </SwiperSlide>
@@ -73,13 +76,14 @@ const Banner = () => {
                     <h1 className='text-3xl md:text-5xl text-white'>Earn Money On Your Terms!</h1>
             <p className='text-white'>
             Join now and experience the convenience and benefits of microtasking. Your time, your money!</p>
-           <Button
+              <Link to='#'>
+                <Button 
                 variant="text"
                 size="sm"
                 className="inline-block px-8 py-3 bg-[#0044BC] hover:bg-[#6BA6FF] text-white rounded"
               >
                 <span>Contact Us</span>
-              </Button>
+              </Button></Link>
       </div>
           </div>
         </SwiperSlide>

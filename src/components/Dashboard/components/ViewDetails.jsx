@@ -72,6 +72,13 @@ const ViewDetails = () => {
     try {
       const response = await axiosSecure.post("/submission", submissionData);
       if (response.status === 200) {
+
+        await axiosSecure.post("/notifications", { // Send notification request
+        email: item?.taskCreator?.email,
+        message: `A new submission has been made for your task "${item?.title}".`,
+        read: false,
+        timestamp: new Date(),
+      });
         // Decrease quantity by 1
         await axiosSecure.patch(`/tasks/${item._id}/decreaseQuantity`);
         toast.success("Submission successful and quantity updated");

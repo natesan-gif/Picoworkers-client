@@ -92,7 +92,6 @@ return updateProfile(auth.currentUser, {
                                 setLoading(false);
                    }
                 })
- return () => unsubscribe();
             }
             else {
                 //  remove token (if token stored in the client side: Local storage, caching, in memory)

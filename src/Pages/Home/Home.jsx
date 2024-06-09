@@ -6,6 +6,7 @@ import HowWorks from './HowWorks/HowWorks';
 import Testimonials from './Testimonials/Testimonials';
 import LoadingSpinner from '../../components/Spinner/LoadingSpinner';
 import TopEarners from './TopEarners/TopEarners';
+import { Helmet } from 'react-helmet-async';
 
 
 const Home = () => {
@@ -19,6 +20,9 @@ const Home = () => {
     if (loading) return <LoadingSpinner></LoadingSpinner>;
     return (
         <div>
+            <Helmet>
+               <title>Picoworkers | Home</title>
+            </Helmet>
             <Banner></Banner>
             <FeatureSection></FeatureSection>
             <HowWorks></HowWorks>

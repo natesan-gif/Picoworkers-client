@@ -14,9 +14,9 @@ const Footer = () => {
           </h2>
                   </div>
         
-          <p>Contact Information - <span> <a href="/contact-us">  PicoWorker</a></span> </p>
+          <p>Contact Information - <span> <a href="/contact-us">PicoWorkers</a></span> </p>
         
-          <p>Copyright © <span>{moment().format("YYYY")}. </span>All right reserved by -  PicoWorker  </p>
+          <p>Copyright © <span>{moment().format("YYYY")}. </span>All right reserved by -  PicoWorkers  </p>
           <div className="text-xl mt-2 flex items-center gap-4">
             <a href="https://facebook.com">
               <FaFacebook />

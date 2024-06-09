@@ -8,7 +8,7 @@ import { MdClose, MdDelete } from "react-icons/md";
 import LoadingSpinner from "../../Spinner/LoadingSpinner";
 import Modal from "react-modal";
 import toast from "react-hot-toast";
-
+import { Helmet } from "react-helmet-async";
 const customStyles = {
   content: {
     top: "50%",
@@ -140,7 +140,10 @@ const TaskCreatorHome = () => {
     return <LoadingSpinner />;
 
   return (
-    <div className="w-full min-h-[calc(100vh-400px)] flex flex-col justify-center items-center text-gray-800 rounded-xl bg-gray-50">
+    <div className="w-full min-h-[calc(100vh-400px)] flex flex-col justify-center items-center text-gray-800 rounded-xl ">
+      <Helmet>
+         <title>Task Creator Home | Dashboard</title>
+      </Helmet>
       <div className="mx-auto text-center space-y-4">
         <h2 className="pt-6 text-2xl lg:text-4xl font-bold text-black">
           States

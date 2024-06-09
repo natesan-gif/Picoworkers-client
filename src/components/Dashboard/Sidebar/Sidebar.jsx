@@ -6,7 +6,7 @@ import { GrUserAdmin } from 'react-icons/gr'
 import { MdHomeWork } from 'react-icons/md'
 import { AiOutlineBars } from 'react-icons/ai'
 import { BsGraphUp } from 'react-icons/bs'
-import { NavLink } from 'react-router-dom'
+import { NavLink, Navigate } from 'react-router-dom'
 
 import { Link } from 'react-router-dom'
 // import useRole from '../../../hooks/useRole'
@@ -22,7 +22,6 @@ import WorkerMenu from './Menu/WorkerMenu.jsx'
 
 
 const Sidebar = () => {
-  const { logOut } = useAuth()
   const [isActive, setActive] = useState(false)
   const [toggle, setToggle] = useState(true)
   const [role, isLoading] = useRole()
@@ -35,6 +34,7 @@ const Sidebar = () => {
   const toggleHandler = event => {
     setToggle(event.target.checked)
   }
+   
   return (
     <>
       {/* Small Screen Navbar */}
@@ -76,7 +76,7 @@ const Sidebar = () => {
               href="#"
               className="mr-1 md:mr-2 cursor-pointer py-1.5 font-bold pl-2 md:pl-6 text-xl text-[#416EF0] "
             >
-          PicoWorker
+          PicoWorkers
             </Typography>
               </Link>
             </div>
@@ -118,15 +118,7 @@ const Sidebar = () => {
         </div>
 
         <div>
-          <hr />
-          <button
-            onClick={logOut}
-            className='flex w-full items-center px-4 py-2 mt-5 text-gray-600 hover:bg-gray-300   hover:text-gray-700 transition-colors duration-300 transform'
-          >
-            <GrLogout className='w-5 h-5' />
-
-            <span className='mx-4 font-medium'>Logout</span>
-          </button>
+          
         </div>
       </div>
     </>
