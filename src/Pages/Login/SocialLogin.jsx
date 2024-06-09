@@ -24,7 +24,7 @@ const SocialLogin = () => {
        try {
       // 1. google sign in from firebase
          const result = await googleSignIn();
-         console.log(result.user)
+        //  console.log(result.user)
       const userInfo = {
         email: result?.user?.email,
         image: result?.user?.photoURL,
