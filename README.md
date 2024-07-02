@@ -33,6 +33,6 @@ https://assignment-12-27979.web.app
 - Open your terminal or command prompt.
 - Run the following command with your project repository URL: <pre>`git clone https://github.com/NLucky320/assignment-12-client`</pre> 
 - Install Dependencies in your project directory:  <pre>`npm install`</pre>
-- Run the Project: <pre>`npm start dev`</pre> 
+- Run the Project: <pre>`npm run dev`</pre> 
  
 
