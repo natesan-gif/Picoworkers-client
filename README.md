@@ -31,7 +31,7 @@ https://assignment-12-27979.web.app
 
 #### To run the repository in your local computer please follow the steps below
 - Open your terminal or command prompt.
-- Run the following command with your project repository URL: <pre>`git clone https://github.com/NLucky320/Picoworkers`</pre> 
+- Run the following command with your project repository URL: <pre>`git clone https://github.com/NLucky320/Picoworkers-client`</pre> 
 - Install Dependencies in your project directory:  <pre>`npm install`</pre>
 - Run the Project: <pre>`npm run dev`</pre> 
  
