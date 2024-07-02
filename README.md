@@ -31,7 +31,7 @@ https://assignment-12-27979.web.app
 
 #### if you want to clone the repository and run it in your local computer please follow the steps below
 - Open your terminal or command prompt.
-- Run the following command with your project repository URL: git clone https://github.com/NLucky320/assignment-12-client
+- Run the following command with your project repository URL: git clone <pre>`https://github.com/NLucky320/assignment-12-client`</pre> 
 - Install Dependencies in yoour project directory: npm install
 - Run the Project: npm start dev
  
