@@ -12,6 +12,11 @@ task management, task creation, and platform administration.
 https://assignment-12-27979.web.app
 
 ### Features and Characteristics
+- Micro Tasking: Users can find and complete small tasks to earn rewards. These tasks can range from simple surveys to more complex activities like content creation or app testing.
+- Earning Rewards: Users are compensated for completing tasks, providing a straightforward way to earn money online.
+- Notifications: Real-time notifications to keep users informed about task updates, payments, and other important events.
+  
+### Technologies used 
 
 - MongoDB: Flexible and scalable data storage solution.
 - Express.js: Efficient server-side development with Express.js.
@@ -23,3 +28,11 @@ https://assignment-12-27979.web.app
 - AxiosSecure: Enhanced security for HTTP requests.
 - TanStack Query: State management solution for React applications.
 - Tanstack Mutation: Efficient data manipulation with Tanstack Mutation.
+
+#### if you want to clone the repository and run it in your local computer please follow the steps below
+- Open your terminal or command prompt.
+- Run the following command with your project repository URL: git clone https://github.com/NLucky320/assignment-12-client
+- Install Dependencies in yoour project directory: npm install
+- Run the Project: npm start dev
+ 
+
