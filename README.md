@@ -15,6 +15,10 @@ https://assignment-12-27979.web.app
 - Micro Tasking: Users can find and complete small tasks to earn rewards. These tasks can range from simple surveys to more complex activities like content creation or app testing.
 - Earning Rewards: Users are compensated for completing tasks, providing a straightforward way to earn money online.
 - Notifications: Real-time notifications to keep users informed about task updates, payments, and other important events.
+- Context API: Global state management across components.
+- AxiosSecure: Enhanced security for HTTP requests.
+- TanStack Query: State management solution for React applications.
+- Tanstack Mutation: Efficient data manipulation with Tanstack Mutation.
   
 ### Technologies used 
 
@@ -22,17 +26,13 @@ https://assignment-12-27979.web.app
 - Express.js: Efficient server-side development with Express.js.
 - Node.js: High-performance server applications with Node.js.
 - React Router: Client-side routing for seamless navigation.
-- Context API: Global state management across components.
 - Firebase Authentication: Secure user authentication and authorization.
 - Private Routes: Protection of authenticated routes.
-- AxiosSecure: Enhanced security for HTTP requests.
-- TanStack Query: State management solution for React applications.
-- Tanstack Mutation: Efficient data manipulation with Tanstack Mutation.
 
-#### if you want to clone the repository and run it in your local computer please follow the steps below
+#### To run the repository in your local computer please follow the steps below
 - Open your terminal or command prompt.
 - Run the following command with your project repository URL: <pre>`git clone https://github.com/NLucky320/assignment-12-client`</pre> 
-- Install Dependencies in yoour project directory:  <pre>`npm install`</pre>
+- Install Dependencies in your project directory:  <pre>`npm install`</pre>
 - Run the Project: <pre>`npm start dev`</pre> 
  
 
